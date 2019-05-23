@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "469786124103",
+    "firebase_url": "https://espaciojahiel.firebaseio.com",
+    "project_id": "espaciojahiel",
+    "storage_bucket": "espaciojahiel.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:469786124103:android:71e8c7bb38b5b0c2",
+        "android_client_info": {
+          "package_name": "com.rosario.hp.espaciojahiel"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "469786124103-ebq0agf9nnrvcm46077ml06aucf2vdef.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.rosario.hp.espaciojahiel",
+            "certificate_hash": "c5cb650992b1c31edb28371b02e7d6801d71ffb1"
+          }
+        },
+        {
+          "client_id": "469786124103-2ejum2as3s3coak3qk4q8gl39r260qct.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCknoKrEPLk2EzbpZ7Vs-HbfjwJ4G_1HEM"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "469786124103-2ejum2as3s3coak3qk4q8gl39r260qct.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

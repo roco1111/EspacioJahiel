@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/evento_container"
+    android:background="@android:color/transparent"
+    android:paddingBottom="12dp"
+    android:paddingStart="15dp"
+    android:paddingLeft="15dp"
+    android:paddingTop="10dp">
+
+    <ImageView
+        android:id="@+id/imageViewEstella5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/imageViewEstella4"
+        android:layout_alignBottom="@+id/imageViewEstella4"
+        android:layout_marginStart="25dp"
+        app:srcCompat="@drawable/ic_estrella" />
+
+    <ImageView
+        android:id="@+id/imageViewEstella4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/imageViewEstella3"
+        android:layout_alignBottom="@+id/imageViewEstella3"
+        android:layout_marginStart="25dp"
+        app:srcCompat="@drawable/ic_estrella" />
+
+    <ImageView
+        android:id="@+id/imageViewEstella3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/imageViewEstella2"
+        android:layout_alignBottom="@+id/imageViewEstella2"
+        android:layout_marginStart="25dp"
+        app:srcCompat="@drawable/ic_estrella" />
+
+    <ImageView
+        android:id="@+id/imageViewEstella2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/imageViewEstella1"
+        android:layout_alignBottom="@+id/imageViewEstella1"
+        android:layout_marginStart="25dp"
+        app:srcCompat="@drawable/ic_estrella" />
+
+    <ImageView
+        android:id="@+id/imageViewEstella1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/imagenFondo"
+        android:layout_centerHorizontal="true"
+        android:layout_marginStart="5dp"
+        app:srcCompat="@drawable/ic_estrella" />
+
+    <ImageView
+        android:id="@+id/imagenFondo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        app:srcCompat="@drawable/video" />
+
+    <View
+        android:id="@+id/view4"
+        android:layout_width="fill_parent"
+        android:layout_height="0.5dp"
+        android:layout_marginTop="10dp"
+        android:background="@android:color/darker_gray"
+        android:visibility="visible"
+        android:layout_below="@+id/imagenFondo"/>
+
+    <ImageView
+        android:id="@+id/imageNuevo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/imagenFondo"
+        android:layout_alignTop="@+id/imagenFondo"
+        app:srcCompat="@drawable/ima_nuevo" />
+
+    <ImageView
+        android:id="@+id/txt_nuevo"
+        android:layout_width="52dp"
+        android:layout_height="wrap_content"
+        android:layout_alignEnd="@+id/imageNuevo"
+        android:layout_alignTop="@+id/imagenFondo"
+        app:srcCompat="@drawable/txt_nuevo" />
+
+    <TextView
+        android:id="@+id/textViewFecha"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignTop="@+id/imagenFondo"
+        android:layout_marginEnd="141dp"
+        android:textSize="@dimen/tamanio_item"
+        android:text="TextView"
+        android:textColor="@color/titulo_texto"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/textViewDescripcion"
+        android:layout_width="174dp"
+        android:layout_height="62dp"
+        android:layout_alignStart="@+id/textViewFecha"
+        android:layout_centerVertical="true"
+        android:textSize="@dimen/tamanio_item"
+        android:text="TextView" />
+
+    <TextView
+        android:id="@+id/textViewCalificacion"
+        android:layout_width="174dp"
+        android:layout_height="62dp"
+        android:layout_alignStart="@+id/textViewFecha"
+        android:layout_centerVertical="true"
+        android:textSize="@dimen/tamanio_item"
+        android:text="TextView"
+        android:visibility="invisible"/>
+
+    <ImageView
+        android:id="@+id/imagePrecio"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentTop="true"
+        app:srcCompat="@drawable/ima_precio" />
+
+    <TextView
+        android:id="@+id/textViewPrecio"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+
+        android:layout_alignTop="@+id/imagenFondo"
+        android:text="TextView"
+        android:textColor="@color/secondaryText"
+        android:textSize="@dimen/texto_boton_chico" />
+
+
+</RelativeLayout>

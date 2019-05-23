@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="bottom"
+    android:orientation="vertical"
+    android:layout_marginStart="2dp"
+    android:layout_marginEnd="2dp"
+>
+
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/buttonConfiguracion"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/textViewTitulo"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginTop="50dp"
+        android:layout_marginEnd="18dp"
+        android:layout_marginRight="18dp"
+        android:clickable="true"
+        android:tint="@color/buttonTextColor"
+        app:srcCompat="@drawable/ic_configuracion" />
+
+    <ImageView
+        android:id="@+id/imageViewArcangel"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="0dp"
+        android:layout_marginTop="0dp"
+        android:background="@drawable/arcangeles"
+        android:contentDescription="@string/nav_header_desc" />
+
+    <TextView
+        android:id="@+id/textViewTitulo"
+        android:layout_width="352dp"
+        android:layout_height="23dp"
+        android:layout_below="@+id/imageViewArcangel"
+        android:layout_centerHorizontal="true"
+        android:text="TextView"
+        android:layout_marginTop="12dp"
+        android:textAlignment="center"
+        android:textColor="@color/colorPrimary"
+        android:textSize="@dimen/tamanio_parrafo" />
+
+    <TextView
+        android:id="@+id/textViewtexto"
+        android:layout_width="362dp"
+        android:layout_height="242dp"
+        android:layout_below="@+id/textViewTitulo"
+        android:layout_centerHorizontal="true"
+        android:text="TextView"
+        android:textColor="@color/colorPrimary"
+        android:textSize="@dimen/tamanio_item" />
+
+    <ImageView
+        android:id="@+id/imageView8"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/textViewtexto"
+        android:layout_centerHorizontal="true"
+        android:foregroundGravity="center"
+        app:srcCompat="@drawable/fitma_silvana" />
+
+    <ImageView
+        android:id="@+id/imageView9"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/imageView8"
+        android:layout_centerHorizontal="true"
+        app:srcCompat="@drawable/angeologa" />
+
+
+</RelativeLayout>

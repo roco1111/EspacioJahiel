@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="320dp"
+    android:background="@color/colorRippleMini">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+
+        <ImageView
+            android:id="@+id/imagen_espacio"
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:scaleType="centerCrop"
+            android:transitionName="@string/nombre_transicion_imagen" />
+
+
+        <ImageView
+            android:id="@+id/imageViewDestacado"
+            android:layout_width="@dimen/icono"
+            android:layout_height="@dimen/icono"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:layout_below="@+id/contacto"
+            android:layout_gravity="end"
+            android:layout_marginEnd="10dp"
+            android:layout_marginRight="10dp"
+
+            app:srcCompat="@drawable/ic_estrella" />
+
+
+        <TextView
+            android:id="@+id/nombre_evento"
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:layout_below="@+id/imagen_espacio"
+            android:layout_marginTop="5dp"
+            android:layout_marginStart="5dp"
+            android:maxLines="1"
+            android:text="hola"
+            android:textAppearance="@style/TextAppearance.AppCompat.Subhead"
+            android:textColor="@android:color/black"
+            android:textSize="@dimen/tamanio_item_pequenio"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/contacto"
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:layout_below="@+id/nombre_evento"
+            android:maxLines="1"
+            android:layout_marginStart="5dp"
+            android:textAppearance="@style/TextAppearance.AppCompat.Subhead"
+            android:textColor="@android:color/black"
+            android:textSize="@dimen/tamanio_item_pequenio" />
+
+
+        <LinearLayout
+            android:id="@+id/boton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+
+            android:layout_below="@+id/contacto">
+
+            <ImageView
+                android:id="@+id/imageButtonFace"
+                android:layout_width="@dimen/icono"
+                android:layout_height="@dimen/icono"
+                android:layout_gravity="end"
+                android:layout_marginEnd="5dp"
+                android:layout_marginRight="5dp"
+                app:srcCompat="@drawable/facebook" />
+
+
+            <ImageView
+                android:id="@+id/imageViewpagina"
+                android:layout_width="@dimen/icono"
+                android:layout_height="@dimen/icono"
+                android:layout_gravity="end"
+                android:layout_marginEnd="10dp"
+                android:layout_marginRight="10dp"
+                app:srcCompat="@drawable/mundo" />
+
+            <ImageView
+            android:id="@+id/mail"
+            android:layout_width="@dimen/icono"
+            android:layout_height="@dimen/icono"
+            android:layout_gravity="end"
+            android:layout_marginEnd="10dp"
+            android:layout_marginRight="10dp"
+            app:srcCompat="@drawable/email" />
+            <ImageView
+                android:id="@+id/instagram"
+                android:layout_width="@dimen/icono"
+                android:layout_height="@dimen/icono"
+                android:layout_gravity="end"
+                android:layout_marginEnd="5dp"
+                android:layout_marginRight="5dp"
+                app:srcCompat="@drawable/instagram" />
+        </LinearLayout>
+    </RelativeLayout>
+
+</FrameLayout>

@@ -1,0 +1,113 @@
+package com.rosario.hp.espaciojahiel;
+
+import android.support.v4.app.Fragment;
+import android.os.Bundle;
+import android.support.v4.app.DialogFragment;
+import android.support.v7.app.ActionBar;
+import android.support.v7.app.AppCompatActivity;
+import android.view.View;
+import android.widget.Button;
+import android.widget.Toast;
+import android.support.v7.widget.Toolbar;
+
+import com.rosario.hp.espaciojahiel.Fragment.ConfirmDialogFragment;
+import com.rosario.hp.espaciojahiel.Fragment.datosUsuarios;
+
+public class insertUsuario extends AppCompatActivity
+        implements ConfirmDialogFragment.ConfirmDialogListener {
+    private Button btnAceptar = null;
+    private Button btnCancelar = null;
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.cancel_done);
+        setToolbar(); // Setear Toolbar como action bar
+
+
+        Fragment fragment;
+        fragment = new datosUsuarios();
+
+
+        // Creación del fragmento de inserción
+        if (savedInstanceState == null) {
+            getSupportFragmentManager().beginTransaction()
+                    .replace(R.id.main_content, fragment)
+                    .commit();
+
+        }
+
+        btnAceptar = findViewById(R.id.aceptar);
+        btnCancelar =  findViewById(R.id.cancelar);
+
+
+        btnAceptar.setOnClickListener( new View.OnClickListener() {
+            public void onClick(View v) {
+                datosUsuarios datosUsuarios = (datosUsuarios)
+                        getSupportFragmentManager().findFragmentById(R.id.main_content);
+
+                if (datosUsuarios != null)
+
+                    if (!datosUsuarios.validar()) {
+                        if (datosUsuarios.compara_clave()) {
+                            datosUsuarios.guardarUsuario();
+                        } else {
+                            Toast.makeText(
+                                    getApplication(),
+                                    "La clave ingresada no coincide con su confirmación",
+                                    Toast.LENGTH_LONG).show();
+                        }
+                    }
+
+
+            }
+        });
+        btnCancelar.setOnClickListener( new View.OnClickListener() {
+            public void onClick(View v) {
+
+
+                finish(); // Finalizar actividad descartando cambios
+
+            }
+        });
+    }
+
+    private void setToolbar() {
+        Toolbar toolbar = findViewById(R.id.toolbar1);
+        setSupportActionBar(toolbar);
+        final ActionBar ab = getSupportActionBar();
+        if (ab != null) {
+
+            ab.setDisplayHomeAsUpEnabled(false);
+            ab.setDisplayShowHomeEnabled(false);
+            ab.setDisplayShowTitleEnabled(false);
+        }
+
+    }
+
+    @Override
+    public void onDialogPositiveClick(DialogFragment dialog) {
+        datosUsuarios datosUsuarios = (datosUsuarios)
+                getSupportFragmentManager().findFragmentByTag("datosUsuarios");
+
+        if (datosUsuarios != null) {
+            if (!datosUsuarios.camposVacios())
+                datosUsuarios.guardarUsuario();
+
+
+        }
+    }
+
+    @Override
+    public void onDialogNegativeClick(DialogFragment dialog) {
+        datosUsuarios datosUsuarios = (datosUsuarios)
+                getSupportFragmentManager().findFragmentByTag("datosUsuarios");
+
+        if (datosUsuarios == null) {
+            finish(); // Finalizar actividad descartando cambios
+        }
+    }
+}
+
+
+
+

@@ -1,0 +1,28 @@
+<resources>
+    <!-- Default screen margins, per the Android Design guidelines. -->
+    <dimen name="activity_horizontal_margin">16dp</dimen>
+    <dimen name="activity_vertical_margin">12dp</dimen>
+    <dimen name="nav_header_vertical_spacing">8dp</dimen>
+    <dimen name="nav_header_height">196dp</dimen>
+    <dimen name="encabezado">346dp</dimen>
+    <dimen name="fab_margin">16dp</dimen>
+    <dimen name="opciones">20sp</dimen>
+    <dimen name="texto_boton_chico">10sp</dimen>
+    <dimen name="tamanio_item">14sp</dimen>
+    <dimen name="tamanio_item_pequenio">12sp</dimen>
+    <dimen name="tamanio_parrafo">18sp</dimen>
+    <dimen name="parrafo_mensaje">17sp</dimen>
+    <dimen name="titulo_item">16sp</dimen>
+    <dimen name="tamanio_titulo">20sp</dimen>
+    <dimen name="headerbar_elevation">4dp</dimen>
+    <dimen name="campos_height">42dp</dimen>
+    <dimen name="icono">50dp</dimen>
+    <dimen name="campos_width">370dp</dimen>
+    <dimen name="campos_width_chico">200dp</dimen>
+    <dimen name="perfil_image_size">90dp</dimen>
+    <dimen name="alto_imagen_acerca">280dp</dimen>
+    <dimen name="ancho_imagen_acerca">155dp</dimen>
+    <dimen name="espacio_grilla">20dp</dimen>
+    <dimen name="estrella">30dp</dimen>
+
+</resources>

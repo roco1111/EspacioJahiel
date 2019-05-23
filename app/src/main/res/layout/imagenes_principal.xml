@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    >
+
+
+    <ImageView
+        android:id="@+id/imageFondo"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:adjustViewBounds="true"
+        android:scaleType="fitCenter"
+        app:srcCompat="@drawable/splash"
+        tools:layout_editor_absoluteX="5dp"
+        tools:layout_editor_absoluteY="3dp" />
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="5dp">
+
+        <LinearLayout
+            android:layout_width="95dp"
+            android:layout_height="wrap_content"
+            android:id="@+id/Fondo"
+            android:orientation="vertical"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:layout_marginEnd="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginBottom="10dp">
+
+        <android.support.design.widget.FloatingActionButton
+            android:id="@+id/buttonFondo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:clickable="true"
+
+            app:srcCompat="@drawable/ic_fondo" />
+
+            <TextView
+                android:id="@+id/textViewFondo"
+                android:layout_width="wrap_content"
+                android:layout_gravity="center"
+                android:layout_height="wrap_content"
+                android:text="@string/fondo" />
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="95dp"
+            android:layout_height="wrap_content"
+            android:id="@+id/descargar"
+            android:layout_alignEnd="@id/Fondo"
+            android:layout_marginEnd="105dp"
+            android:layout_marginStart="65dp"
+            android:orientation="vertical">
+            <android.support.design.widget.FloatingActionButton
+                android:id="@+id/buttonDescarga"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:clickable="true"
+
+                android:layout_gravity="center"
+                app:srcCompat="@drawable/ic_bajar" />
+            <TextView
+                android:id="@+id/textViewdescarga"
+                android:layout_gravity="center"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/descargar" />
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="75dp"
+            android:layout_height="wrap_content"
+            android:id="@+id/favorito"
+            android:layout_alignEnd="@id/descargar"
+            android:layout_marginEnd="105dp"
+            android:layout_marginStart="65dp"
+            android:orientation="vertical">
+            <android.support.design.widget.FloatingActionButton
+                android:id="@+id/buttonFavorito"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:clickable="true"
+                android:layout_gravity="center"
+                app:srcCompat="@drawable/ic_gusta" />
+            <TextView
+                android:id="@+id/textViewfavorito"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="@string/favorito" />
+        </LinearLayout>
+    </RelativeLayout>
+
+
+</RelativeLayout>

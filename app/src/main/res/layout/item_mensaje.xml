@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/evento_container"
+    android:background="@android:color/transparent"
+    android:paddingBottom="12dp"
+    android:paddingLeft="15dp"
+    android:paddingTop="10dp">
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/imageMensaje"
+        android:layout_width="@dimen/perfil_image_size"
+        android:layout_height="@dimen/perfil_image_size"
+        android:layout_marginTop="6dp"
+        android:scaleType="centerCrop"
+        android:src="@drawable/angel"
+        app:border_color="@android:color/white"
+        app:border_width="1dp" />
+
+    <Button
+        android:id="@+id/buttonVer"
+        android:layout_width="56dp"
+        android:layout_height="25dp"
+
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="45dp"
+        android:background="@drawable/btn_ver"
+        android:text="@string/ver"
+        android:textColor="@color/secondaryText"
+        android:textSize="@dimen/texto_boton_chico" />
+
+    <TextView
+        android:id="@+id/textViewFecha"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/imageMensaje"
+        android:layout_toEndOf="@+id/imageMensaje"
+        android:layout_marginTop="6dp"
+        android:layout_marginStart="26dp"
+        android:text="TextView"
+        android:textColor="@color/titulo_texto"
+        android:textSize="@dimen/tamanio_parrafo"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/textViewmensaje"
+        android:layout_width="154dp"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/textViewFecha"
+        android:layout_alignStart="@+id/textViewFecha"
+        android:layout_marginTop="30dp"
+        android:text="TextView"
+        android:textColor="@color/primaryText"
+        android:textSize="@dimen/tamanio_item" />
+
+    <View
+        android:id="@+id/view4"
+        android:layout_width="fill_parent"
+        android:layout_height="0.5dp"
+        android:layout_marginTop="10dp"
+        android:background="@android:color/darker_gray"
+        android:visibility="visible"
+        android:layout_below="@+id/imageMensaje"/>
+
+</RelativeLayout>
