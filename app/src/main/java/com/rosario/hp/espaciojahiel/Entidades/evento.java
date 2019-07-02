@@ -10,6 +10,15 @@ public class evento {
     private String lugar;
     private String hora;
     private String destacado;
+    private String cupo_lleno;
+
+    public String getCupo_lleno() {
+        return cupo_lleno;
+    }
+
+    public void setCupo_lleno(String cupo_lleno) {
+        this.cupo_lleno = cupo_lleno;
+    }
 
     public evento(String id, String fecha, String nombre, String link, String fecha_alta, String lugar) {
         this.id = id;

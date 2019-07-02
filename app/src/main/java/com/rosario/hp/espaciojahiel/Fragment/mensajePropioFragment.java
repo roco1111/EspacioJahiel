@@ -1,6 +1,5 @@
 package com.rosario.hp.espaciojahiel.Fragment;
 
-import android.app.Activity;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
@@ -12,16 +11,12 @@ import android.view.ViewGroup;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
-
-import com.android.volley.DefaultRetryPolicy;
 import com.android.volley.Request;
 import com.android.volley.Response;
-import com.android.volley.VolleyError;
-import com.android.volley.toolbox.JsonObjectRequest;
+import com.android.volley.error.VolleyError;
+import com.android.volley.request.JsonObjectRequest;
 import com.rosario.hp.espaciojahiel.Adaptadores.mensajeCanalizadoAdapter;
 import com.rosario.hp.espaciojahiel.Entidades.mensajeCanalizado;
-import com.rosario.hp.espaciojahiel.Entidades.mensajeUsuario;
 import com.rosario.hp.espaciojahiel.R;
 import com.rosario.hp.espaciojahiel.include.Constantes;
 import com.rosario.hp.espaciojahiel.include.VolleySingleton;
@@ -30,13 +25,8 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.io.UnsupportedEncodingException;
-import java.net.URLEncoder;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
-import java.util.HashMap;
-import java.util.Map;
 
 public class mensajePropioFragment extends Fragment {
     private static final String TAG = mensajePropioFragment.class.getSimpleName();
@@ -128,7 +118,7 @@ public class mensajePropioFragment extends Fragment {
                 getInstance(getActivity()).
                 addToRequestQueue(
                         new JsonObjectRequest(
-                                Request.Method.GET,
+                                Request.Method.POST,
                                 newURL,
                                 null,
                                 new Response.Listener<JSONObject>() {

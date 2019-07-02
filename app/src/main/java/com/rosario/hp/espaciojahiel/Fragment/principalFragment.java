@@ -2,28 +2,20 @@ package com.rosario.hp.espaciojahiel.Fragment;
 
 import android.app.Activity;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.content.res.Resources;
 import android.os.Bundle;
-import android.preference.PreferenceManager;
 import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentTransaction;
 import android.view.LayoutInflater;
-import android.view.Menu;
-import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import com.rosario.hp.espaciojahiel.MainActivity;
 import com.rosario.hp.espaciojahiel.R;
-import com.rosario.hp.espaciojahiel.WebActivity;
 import com.rosario.hp.espaciojahiel.activity_arcangel;
 import com.rosario.hp.espaciojahiel.activity_arcangel_general;
 import com.rosario.hp.espaciojahiel.activity_espacio;
 import com.rosario.hp.espaciojahiel.activity_evento;
-import com.rosario.hp.espaciojahiel.activity_imagen;
 import com.rosario.hp.espaciojahiel.activity_imagen_principal;
 import com.rosario.hp.espaciojahiel.activity_mensaje;
 import com.rosario.hp.espaciojahiel.activity_videos;
@@ -39,10 +31,7 @@ public class principalFragment extends Fragment {
     TextView fondos_pantalla;
     TextView tu_arcangel;
     TextView espacio;
-    String ls_nombre;
     Activity activity;
-    private int posicion;
-    private String posicion_string;
 
     public principalFragment(){
         // Constructor vacío

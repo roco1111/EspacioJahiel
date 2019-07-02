@@ -18,7 +18,6 @@ import android.preference.PreferenceManager;
 import android.provider.MediaStore;
 import android.support.annotation.NonNull;
 import android.support.v4.app.ActivityCompat;
-import android.support.v4.app.FragmentTransaction;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -29,7 +28,6 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.ImageButton;
-import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 import android.support.v4.app.Fragment;
@@ -37,10 +35,9 @@ import android.support.v4.app.Fragment;
 import com.android.volley.DefaultRetryPolicy;
 import com.android.volley.Request;
 import com.android.volley.Response;
-import com.android.volley.VolleyError;
-import com.bumptech.glide.Glide;
+import com.android.volley.error.VolleyError;
+import com.android.volley.request.JsonObjectRequest;
 import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
@@ -52,7 +49,6 @@ import com.google.firebase.storage.UploadTask;
 import com.rosario.hp.espaciojahiel.Entidades.usuario;
 import com.rosario.hp.espaciojahiel.GlideApp;
 import com.rosario.hp.espaciojahiel.R;
-import com.android.volley.toolbox.JsonObjectRequest;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.rosario.hp.espaciojahiel.include.Constantes;
@@ -868,7 +864,7 @@ public class datosUsuarios extends Fragment {
                 getInstance(getActivity()).
                 addToRequestQueue(
                         new JsonObjectRequest(
-                                Request.Method.GET,
+                                Request.Method.POST,
                                 newURL,
                                 null,
                                 new Response.Listener<JSONObject>() {

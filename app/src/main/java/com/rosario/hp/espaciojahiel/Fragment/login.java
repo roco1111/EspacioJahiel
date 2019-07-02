@@ -27,8 +27,8 @@ import android.widget.Toast;
 import com.android.volley.DefaultRetryPolicy;
 import com.android.volley.Request;
 import com.android.volley.Response;
-import com.android.volley.VolleyError;
-import com.android.volley.toolbox.JsonObjectRequest;
+import com.android.volley.error.VolleyError;
+import com.android.volley.request.JsonObjectRequest;
 import com.rosario.hp.espaciojahiel.Entidades.usuario;
 import com.rosario.hp.espaciojahiel.MainActivity;
 import com.rosario.hp.espaciojahiel.R;
@@ -324,7 +324,7 @@ public class login extends Fragment implements LoginInteractor.Callback{
         // Realizar petición GET_BY_ID
         VolleySingleton.getInstance(context).addToRequestQueue(
                 myRequest = new JsonObjectRequest(
-                        Request.Method.GET,
+                        Request.Method.POST,
                         newURL,
                         null,
                         new Response.Listener<JSONObject>() {

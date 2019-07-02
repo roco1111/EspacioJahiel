@@ -1,9 +1,7 @@
 package com.rosario.hp.espaciojahiel.Fragment;
 
-import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Context;
-import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
@@ -12,24 +10,19 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.ImageButton;
-import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.android.volley.DefaultRetryPolicy;
 import com.android.volley.Request;
 import com.android.volley.Response;
-import com.android.volley.VolleyError;
-import com.android.volley.toolbox.JsonObjectRequest;
+import com.android.volley.error.VolleyError;
+import com.android.volley.request.JsonObjectRequest;
 import com.google.gson.Gson;
 import com.rosario.hp.espaciojahiel.Adaptadores.mensajeCanalizadoAdapter;
 import com.rosario.hp.espaciojahiel.Entidades.arcangel;
-import com.rosario.hp.espaciojahiel.Entidades.mensajeCanalizado;
-import com.rosario.hp.espaciojahiel.Entidades.mensajeUsuario;
 import com.rosario.hp.espaciojahiel.Entidades.usuario;
-import com.rosario.hp.espaciojahiel.MainActivity;
 import com.rosario.hp.espaciojahiel.R;
 import com.rosario.hp.espaciojahiel.include.Constantes;
 import com.rosario.hp.espaciojahiel.include.VolleySingleton;
@@ -38,23 +31,16 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.io.UnsupportedEncodingException;
-import java.net.URLEncoder;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
-import java.util.HashMap;
-import java.util.Map;
 
 public class arcangelFragment extends Fragment {
     private static final String TAG = arcangelFragment.class.getSimpleName();
     public static final String ARG_ARTICLES_NUMBER = "arcangel";
 
     private mensajeCanalizadoAdapter adapter;
-
-    private ImageView imageViewArcangel;
 
     private TextView mensaje_arcangel;
     private TextView titulo_arcangel;
@@ -76,7 +62,6 @@ public class arcangelFragment extends Fragment {
 
         mensaje_arcangel = v.findViewById(R.id.textViewtexto);
         titulo_arcangel = v.findViewById(R.id.textViewTitulo);
-        imageViewArcangel = v.findViewById(R.id.imageViewArcangel);
 
         configuracion = v.findViewById(R.id.buttonConfiguracion);
 
@@ -162,7 +147,7 @@ public class arcangelFragment extends Fragment {
                         getInstance(getActivity()).
                         addToRequestQueue(
                                 new JsonObjectRequest(
-                                        Request.Method.GET,
+                                        Request.Method.POST,
                                         newURL,
                                         null,
                                         new Response.Listener<JSONObject>() {
@@ -242,7 +227,7 @@ public class arcangelFragment extends Fragment {
         // Realizar petición GET_BY_ID
         VolleySingleton.getInstance(context).addToRequestQueue(
                 myRequest = new JsonObjectRequest(
-                        Request.Method.GET,
+                        Request.Method.POST,
                         newURL,
                         null,
                         new Response.Listener<JSONObject>() {

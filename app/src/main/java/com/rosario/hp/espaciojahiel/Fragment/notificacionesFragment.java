@@ -1,11 +1,7 @@
 package com.rosario.hp.espaciojahiel.Fragment;
 
 import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.preference.PreferenceManager;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -18,8 +14,8 @@ import android.widget.TextView;
 
 import com.android.volley.Request;
 import com.android.volley.Response;
-import com.android.volley.VolleyError;
-import com.android.volley.toolbox.JsonObjectRequest;
+import com.android.volley.error.VolleyError;
+import com.android.volley.request.JsonObjectRequest;
 import com.google.gson.Gson;
 import com.rosario.hp.espaciojahiel.Adaptadores.notificacionesAdapter;
 
@@ -28,9 +24,6 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
-import java.util.Arrays;
-
-
 import com.rosario.hp.espaciojahiel.Entidades.notificacion;
 import com.rosario.hp.espaciojahiel.R;
 import com.rosario.hp.espaciojahiel.include.Constantes;
@@ -102,7 +95,7 @@ public class notificacionesFragment extends Fragment {
                 getInstance(getActivity()).
                 addToRequestQueue(
                         new JsonObjectRequest(
-                                Request.Method.GET,
+                                Request.Method.POST,
                                 newURL,
                                 null,
                                 new Response.Listener<JSONObject>() {

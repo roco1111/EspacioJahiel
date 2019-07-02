@@ -6,8 +6,8 @@ android {
         applicationId "com.rosario.hp.espaciojahiel"
         minSdkVersion 18
         targetSdkVersion 27
-        versionCode 7
-        versionName "1.06"
+        versionCode 10
+        versionName "1.09"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
         multiDexEnabled true
         setProperty("archivesBaseName", "EspacioJahiel")
@@ -26,6 +26,12 @@ android {
                     keyAlias 'espaciojahiel'
                     keyPassword "123456.a"
                 }
+        upload {
+            storeFile file('C:\\Users\\hp\\.android\\upload-keystore.jks')
+            storePassword '123456.a'
+            keyAlias = 'upload'
+            keyPassword '123456.a'
+        }
     }
     dexOptions{
         maxProcessCount 2
@@ -71,7 +77,7 @@ dependencies {
     implementation 'com.google.firebase:firebase-storage:16.0.2'
     implementation 'com.android.support:multidex:1.0.1'
     testImplementation 'junit:junit:4.12'
-    implementation project(':volley')
+    implementation 'dev.dworks.libs:volleyplus:+'
     androidTestImplementation 'com.android.support.test:runner:1.0.2'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
     implementation 'com.facebook.android:facebook-android-sdk:4.37.0'

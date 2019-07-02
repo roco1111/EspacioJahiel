@@ -130,7 +130,11 @@ public class eventoAdapter extends RecyclerView.Adapter<eventoAdapter.HolderEven
 
         }
 
-
+        if(items.get(position).getCupo_lleno().equals("1")){
+            holder.cupo_lleno.setVisibility(View.VISIBLE);
+        }else{
+            holder.cupo_lleno.setVisibility(View.INVISIBLE);
+        }
 
         //hora
         String ls_fecha = items.get(position).getFecha();
@@ -251,7 +255,8 @@ public class eventoAdapter extends RecyclerView.Adapter<eventoAdapter.HolderEven
         public ImageView imagenNuevo;
         public ImageView estrella;
         public Button btn_ver;
-        public  ImageView finalizado;
+        public ImageView finalizado;
+        public ImageView cupo_lleno;
 
         public ItemClickListener3 listener;
         public HolderEvento(View v, ItemClickListener3 listener) {
@@ -265,6 +270,7 @@ public class eventoAdapter extends RecyclerView.Adapter<eventoAdapter.HolderEven
             estrella = v.findViewById(R.id.imageViewDestacado);
             btn_ver = v.findViewById(R.id.button_ver);
             finalizado = v.findViewById(R.id.finalizado);
+            cupo_lleno = v.findViewById(R.id.cupo_lleno);
             this.listener = listener;
 
             v.setOnClickListener(this);

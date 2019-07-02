@@ -20,8 +20,8 @@ import android.widget.TextView;
 
 import com.android.volley.Request;
 import com.android.volley.Response;
-import com.android.volley.VolleyError;
-import com.android.volley.toolbox.JsonObjectRequest;
+import com.android.volley.error.VolleyError;
+import com.android.volley.request.JsonObjectRequest;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
@@ -46,7 +46,6 @@ public class imagenesUsuarioFragment extends Fragment {
     private imagenAdapter imagenAdapter;
     public static final String ARG_ARTICLES_NUMBER = "imagenes";
     private static final String TAG = imagenesUsuarioFragment.class.getSimpleName();
-    private RecyclerView lista;
     private GridView gridView;
     private static FirebaseAuth.AuthStateListener mAuthListener;
     private TextView texto;
@@ -133,7 +132,7 @@ public class imagenesUsuarioFragment extends Fragment {
                 getInstance(getActivity()).
                 addToRequestQueue(
                         new JsonObjectRequest(
-                                Request.Method.GET,
+                                Request.Method.POST,
                                 newURL,
                                 null,
                                 new Response.Listener<JSONObject>() {

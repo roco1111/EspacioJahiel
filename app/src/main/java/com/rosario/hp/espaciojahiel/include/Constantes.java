@@ -55,7 +55,5 @@ public class Constantes {
     public static final String GET_ARCANGEL_FECHA =  "https://" + IP + PUERTO_HOST + "/app/obtener_arcangel_fecha.php";
 
     /*Mensajes*/
-    public static final String GET_MENSAJES =  "https://" + IP + PUERTO_HOST + "/app/obtener_mensajes.php";
     public static final String GET_MENSAJE =  "https://" + IP + PUERTO_HOST + "/app/obtener_un_mensaje.php";
-    public static final String GET_MENSAJE_FECHA =  "https://" + IP + PUERTO_HOST + "/app/obtener_un_mensaje_fecha.php";
 }

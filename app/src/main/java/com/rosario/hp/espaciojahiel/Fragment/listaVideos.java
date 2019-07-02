@@ -25,8 +25,8 @@ import android.widget.Toast;
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
-import com.android.volley.VolleyError;
-import com.android.volley.toolbox.JsonObjectRequest;
+import com.android.volley.error.VolleyError;
+import com.android.volley.request.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
 import com.google.android.youtube.player.YouTubeInitializationResult;
 import com.google.android.youtube.player.YouTubePlayer;
@@ -51,7 +51,7 @@ import java.util.List;
 
 public class listaVideos extends Fragment implements YouTubeThumbnailView.OnInitializedListener,
         YouTubeThumbnailLoader.OnThumbnailLoadedListener, YouTubePlayer.OnInitializedListener ,
-YouTubePlayer.OnFullscreenListener{
+        YouTubePlayer.OnFullscreenListener{
     YouTubePlayerSupportFragment playerFragment;
     public static final String ARG_ARTICLES_NUMBER = "videos";
     YouTubePlayer Player;
@@ -169,7 +169,7 @@ YouTubePlayer.OnFullscreenListener{
     public void onInitializationSuccess(YouTubeThumbnailView youTubeThumbnailView, YouTubeThumbnailLoader youTubeThumbnailLoader) {
         thumbnailLoader = youTubeThumbnailLoader;
         youTubeThumbnailLoader.setOnThumbnailLoadedListener(listaVideos.this);
-        thumbnailLoader.setPlaylist("PLGTOah0usxhG8uJ9jr8Aa4GzADQ5YIMbK",1);
+        thumbnailLoader.setPlaylist("PLGTOah0usxhG8uJ9jr8Aa4GzADQ5YIMbK");
         sacarJsonInfoVideo();
 
     }

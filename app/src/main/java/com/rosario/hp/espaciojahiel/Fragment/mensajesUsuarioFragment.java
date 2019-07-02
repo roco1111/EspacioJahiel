@@ -15,9 +15,8 @@ import android.widget.TextView;
 
 import com.android.volley.Request;
 import com.android.volley.Response;
-import com.android.volley.VolleyError;
-import com.android.volley.toolbox.JsonObjectRequest;
-import com.rosario.hp.espaciojahiel.Adaptadores.eventoAdapter;
+import com.android.volley.error.VolleyError;
+import com.android.volley.request.JsonObjectRequest;
 import com.rosario.hp.espaciojahiel.Adaptadores.mensajeCanalizadoAdapter;
 import com.rosario.hp.espaciojahiel.Entidades.mensajeUsuario;
 import com.rosario.hp.espaciojahiel.R;
@@ -84,7 +83,7 @@ public class mensajesUsuarioFragment extends Fragment {
                 getInstance(getActivity()).
                 addToRequestQueue(
                         new JsonObjectRequest(
-                                Request.Method.GET,
+                                Request.Method.POST,
                                 newURL,
                                 null,
                                 new Response.Listener<JSONObject>() {

@@ -1,16 +1,11 @@
 package com.rosario.hp.espaciojahiel.Fragment;
 
-import android.Manifest;
 import android.app.Activity;
 import android.app.DatePickerDialog;
 import android.content.DialogInterface;
-import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.AsyncTask;
-import android.provider.MediaStore;
-import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AlertDialog;
 import android.app.Dialog;
 import android.app.ProgressDialog;
@@ -27,29 +22,22 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.app.DatePickerDialog;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
-import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
-
-import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
-import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
-import com.google.firebase.storage.UploadTask;
 import com.rosario.hp.espaciojahiel.Entidades.usuario;
 import com.rosario.hp.espaciojahiel.MainActivity;
 import com.rosario.hp.espaciojahiel.include.Constantes;
 import com.rosario.hp.espaciojahiel.include.DialogUtils;
 import com.rosario.hp.espaciojahiel.R;
 import com.rosario.hp.espaciojahiel.include.VolleySingleton;
-import com.rosario.hp.espaciojahiel.insertUsuario;
 import com.rosario.hp.espaciojahiel.notificaciones.LoginInteractor;
 import com.facebook.AccessToken;
 import com.facebook.CallbackManager;
@@ -77,8 +65,8 @@ import com.google.firebase.auth.FirebaseUser;
 import com.android.volley.Request;
 
 import com.android.volley.Response;
-import com.android.volley.VolleyError;
-import com.android.volley.toolbox.JsonObjectRequest;
+import com.android.volley.error.VolleyError;
+import com.android.volley.request.JsonObjectRequest;
 import com.android.volley.DefaultRetryPolicy;
 
 import com.rosario.hp.espaciojahiel.include.NothingSelectedSpinnerAdapter;
@@ -86,7 +74,6 @@ import com.rosario.hp.espaciojahiel.include.NothingSelectedSpinnerAdapter;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.io.ByteArrayOutputStream;
 import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
 import java.security.MessageDigest;
@@ -147,16 +134,9 @@ public class fragment_presentacion extends Fragment implements LoginInteractor.C
     DatePickerDialog datePickerDialog;
     private FirebaseAuth mFirebaseAuth;
     String id_firebase;
-    NothingSelectedSpinnerAdapter nothing;
     private FirebaseAuth mAuth = null;
     private static FirebaseAuth.AuthStateListener mAuthListener;
     Activity act;
-    private static int SELECT_PICTURE = 2;
-    StorageReference storageRef;
-    private FirebaseStorage storage;
-    private Bitmap loadedImage;
-    Uri imageUri;
-    Context context;
     private CircleImageView imagen;
 
 
@@ -430,7 +410,7 @@ public class fragment_presentacion extends Fragment implements LoginInteractor.C
         // Realizar petición GET_BY_ID
         VolleySingleton.getInstance(context).addToRequestQueue(
                 myRequest = new JsonObjectRequest(
-                        Request.Method.GET,
+                        Request.Method.POST,
                         newURL,
                         null,
                         new Response.Listener<JSONObject>() {
@@ -1213,7 +1193,7 @@ public class fragment_presentacion extends Fragment implements LoginInteractor.C
         // Realizar petición GET_BY_ID
         VolleySingleton.getInstance(context).addToRequestQueue(
                 myRequest = new JsonObjectRequest(
-                        Request.Method.GET,
+                        Request.Method.POST,
                         newURL,
                         null,
                         new Response.Listener<JSONObject>() {
