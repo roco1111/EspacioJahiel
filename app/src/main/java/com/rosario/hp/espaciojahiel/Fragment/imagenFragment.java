@@ -195,7 +195,7 @@ public class imagenFragment extends Fragment {
 
         String newURL = Constantes.INSERT_USUARIO_IMAGEN + "?" + encodedParams;
         Log.d(TAG,newURL);
-                // Actualizar datos en el servidor
+        // Actualizar datos en el servidor
         VolleySingleton.getInstance(getActivity()).addToRequestQueue(
                 myRequest = new JsonObjectRequest(
                         Request.Method.GET,

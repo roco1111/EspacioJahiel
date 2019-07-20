@@ -60,6 +60,12 @@
                 android:value=".MainActivity" />
         </activity>
 
+        <activity android:name=".activity_videos_programa">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".MainActivity" />
+        </activity>
+
         <activity android:name=".activity_imagen_principal">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"

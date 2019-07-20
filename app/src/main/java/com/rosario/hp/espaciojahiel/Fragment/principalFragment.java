@@ -19,6 +19,7 @@ import com.rosario.hp.espaciojahiel.activity_evento;
 import com.rosario.hp.espaciojahiel.activity_imagen_principal;
 import com.rosario.hp.espaciojahiel.activity_mensaje;
 import com.rosario.hp.espaciojahiel.activity_videos;
+import com.rosario.hp.espaciojahiel.activity_videos_programa;
 
 
 public class principalFragment extends Fragment {
@@ -28,6 +29,7 @@ public class principalFragment extends Fragment {
     TextView mi_arcangel;
     TextView eventos;
     TextView videos_meditacion;
+    TextView videos_programa;
     TextView fondos_pantalla;
     TextView tu_arcangel;
     TextView espacio;
@@ -47,6 +49,7 @@ public class principalFragment extends Fragment {
         mi_arcangel =  rootView.findViewById(R.id.mi_arcangel);
         eventos = rootView.findViewById(R.id.eventos);
         videos_meditacion = rootView.findViewById(R.id.videos_meditacion);
+        videos_programa = rootView.findViewById(R.id.videos_programa);
         fondos_pantalla = rootView.findViewById(R.id.fondos_pantalla);
         espacio = rootView.findViewById(R.id.espacios);
         tu_arcangel = rootView.findViewById(R.id.tu_arcangel);
@@ -98,6 +101,14 @@ public class principalFragment extends Fragment {
             }
         });
 
+        videos_programa.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getContext(), activity_videos_programa.class);
+                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                getContext().startActivity(intent);
+            }
+        });
         videos_meditacion.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

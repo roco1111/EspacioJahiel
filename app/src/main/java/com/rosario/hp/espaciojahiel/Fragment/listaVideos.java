@@ -65,6 +65,7 @@ public class listaVideos extends Fragment implements YouTubeThumbnailView.OnInit
     String video;
     List<VideoListAdapter.MyView> mItems;
     private ArrayList<videoYoutube> videos;
+    boolean lb_principal = false;
 
     public Context context;
     private static final String TAG = listaVideos.class.getSimpleName();
@@ -169,7 +170,7 @@ public class listaVideos extends Fragment implements YouTubeThumbnailView.OnInit
     public void onInitializationSuccess(YouTubeThumbnailView youTubeThumbnailView, YouTubeThumbnailLoader youTubeThumbnailLoader) {
         thumbnailLoader = youTubeThumbnailLoader;
         youTubeThumbnailLoader.setOnThumbnailLoadedListener(listaVideos.this);
-        thumbnailLoader.setPlaylist("PLGTOah0usxhG8uJ9jr8Aa4GzADQ5YIMbK");
+        thumbnailLoader.setPlaylist("PLGTOah0usxhG8uJ9jr8Aa4GzADQ5YIMbK",1);
         sacarJsonInfoVideo();
 
     }
@@ -218,12 +219,22 @@ public class listaVideos extends Fragment implements YouTubeThumbnailView.OnInit
 
         @Override
         public void onBindViewHolder(VideoListAdapter.MyView holder, final int position) {
-            mItems.add(holder);
-            holder.imageView.setImageDrawable(thumbnailViews.get(position));
-
+            if(!lb_principal){
+                Player.cueVideo(VideoId.get(position));
+                lb_principal = true;
+            }else {
+                mItems.add(holder);
+                holder.imageView.setImageDrawable(thumbnailViews.get(position));
+            }
             if(titulos.size() > 0) {
 
-                holder.texto_titulo.setText(titulos.get(position));
+                Drawable post;
+
+                post = thumbnailViews.get(position);
+
+                if(post != null) {
+                    holder.texto_titulo.setText(titulos.get(position));
+                }
             }
 
             holder.imageView.setOnClickListener(new View.OnClickListener() {

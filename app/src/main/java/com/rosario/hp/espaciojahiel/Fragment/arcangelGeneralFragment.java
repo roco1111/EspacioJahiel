@@ -87,11 +87,11 @@ public class arcangelGeneralFragment extends Fragment {
         arcangel.setAdapter(ArcangelAdapter);
 
         buttonVer.setOnClickListener(new View.OnClickListener() {
-                                         @Override
-                                         public void onClick(View v) {
-                                             cargarAdaptador();
-                                         }
-                                     });
+            @Override
+            public void onClick(View v) {
+                cargarAdaptador();
+            }
+        });
 
         buttonFecha.setOnClickListener(new View.OnClickListener() {
             @Override

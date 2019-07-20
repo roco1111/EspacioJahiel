@@ -24,113 +24,113 @@ import java.util.Map;
 
 public class FCMInstanceIdService extends FirebaseInstanceIdService {
 
-    private static final String TAG = "MyFirebaseIIDService";
-    private String codUsuario;
+  private static final String TAG = "MyFirebaseIIDService";
+  private String codUsuario;
 
-    @Override
-    public void onTokenRefresh() {
-        String refreshedToken = FirebaseInstanceId.getInstance().getToken();
-        Log.d(TAG, "Refreshed token: " + refreshedToken);
+  @Override
+  public void onTokenRefresh() {
+    String refreshedToken = FirebaseInstanceId.getInstance().getToken();
+    Log.d(TAG, "Refreshed token: " + refreshedToken);
 
-        sendRegistrationToServer(refreshedToken);
+    sendRegistrationToServer(refreshedToken);
+  }
+
+  private void sendRegistrationToServer(String token) {
+    // TODO: Send any registration to your app's servers.
+
+    SharedPreferences settings = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
+    SharedPreferences.Editor editor = settings.edit();
+
+    codUsuario = settings.getString("cod_usuario","0");
+    HashMap<String, String> map = new HashMap<>();// Mapeo previo
+
+    map.put("id", codUsuario);
+    map.put("id_firebase", token);
+
+    JSONObject jobject = new JSONObject(map);
+
+    // Depurando objeto Json...
+    Log.d(TAG, jobject.toString());
+
+    StringBuilder encodedParams = new StringBuilder();
+    try {
+      for (Map.Entry<String, String> entry : map.entrySet()) {
+        encodedParams.append(URLEncoder.encode(entry.getKey(), "utf-8"));
+        encodedParams.append('=');
+        encodedParams.append(URLEncoder.encode(entry.getValue(), "utf-8")).toString();
+        encodedParams.append('&');
+      }
+    } catch (UnsupportedEncodingException uee) {
+      throw new RuntimeException("Encoding not supported: " + "utf-8", uee);
     }
 
-    private void sendRegistrationToServer(String token) {
-        // TODO: Send any registration to your app's servers.
+    encodedParams.setLength(Math.max(encodedParams.length() - 1, 0));
 
-        SharedPreferences settings = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
-        SharedPreferences.Editor editor = settings.edit();
+    String newURL = Constantes.UPDATE_TOKEN + "?" + encodedParams;
 
-        codUsuario = settings.getString("cod_usuario","0");
-        HashMap<String, String> map = new HashMap<>();// Mapeo previo
-
-        map.put("id", codUsuario);
-        map.put("id_firebase", token);
-
-        JSONObject jobject = new JSONObject(map);
-
-        // Depurando objeto Json...
-        Log.d(TAG, jobject.toString());
-
-        StringBuilder encodedParams = new StringBuilder();
-        try {
-            for (Map.Entry<String, String> entry : map.entrySet()) {
-                encodedParams.append(URLEncoder.encode(entry.getKey(), "utf-8"));
-                encodedParams.append('=');
-                encodedParams.append(URLEncoder.encode(entry.getValue(), "utf-8")).toString();
-                encodedParams.append('&');
-            }
-        } catch (UnsupportedEncodingException uee) {
-            throw new RuntimeException("Encoding not supported: " + "utf-8", uee);
-        }
-
-        encodedParams.setLength(Math.max(encodedParams.length() - 1, 0));
-
-        String newURL = Constantes.UPDATE_TOKEN + "?" + encodedParams;
-
-        // Actualizar datos en el servidor
-        VolleySingleton.getInstance(getApplicationContext()).addToRequestQueue(
-                new JsonObjectRequest(
-                        Request.Method.GET,
-                        newURL,
-                        null,
-                        new Response.Listener<JSONObject>() {
-                            @Override
-                            public void onResponse(JSONObject response) {
-                                procesarRespuestaActualizar(response);
-                            }
-                        },
-                        new Response.ErrorListener() {
-                            @Override
-                            public void onErrorResponse(VolleyError error) {
-                                Log.d(TAG, "Error Volley: " + error.getMessage());
-                            }
-                        }
-
-                ) {
-                    @Override
-                    public Map<String, String> getHeaders() {
-                        Map<String, String> headers = new HashMap<String, String>();
-                        headers.put("Content-Type", "application/json; charset=utf-8");
-                        return headers;
+    // Actualizar datos en el servidor
+    VolleySingleton.getInstance(getApplicationContext()).addToRequestQueue(
+            new JsonObjectRequest(
+                    Request.Method.GET,
+                    newURL,
+                    null,
+                    new Response.Listener<JSONObject>() {
+                      @Override
+                      public void onResponse(JSONObject response) {
+                        procesarRespuestaActualizar(response);
+                      }
+                    },
+                    new Response.ErrorListener() {
+                      @Override
+                      public void onErrorResponse(VolleyError error) {
+                        Log.d(TAG, "Error Volley: " + error.getMessage());
+                      }
                     }
 
-                    @Override
-                    public String getBodyContentType() {
-                        return "application/json; charset=utf-8" + getParamsEncoding();
-                    }
-                }
-        );
-    }
-    private void procesarRespuestaActualizar(JSONObject response) {
+            ) {
+              @Override
+              public Map<String, String> getHeaders() {
+                Map<String, String> headers = new HashMap<String, String>();
+                headers.put("Content-Type", "application/json; charset=utf-8");
+                return headers;
+              }
 
-        try {
-            // Obtener estado
-            String estado = response.getString("estado");
-            // Obtener mensaje
-            String mensaje = response.getString("mensaje");
-
-            switch (estado) {
-                case "1":
-                    // Mostrar mensaje
-                    Toast.makeText(
-                            getApplicationContext(),
-                            mensaje,
-                            Toast.LENGTH_LONG).show();
-                    break;
-
-                case "2":
-                    // Mostrar mensaje
-                    Toast.makeText(
-                            getApplicationContext(),
-                            mensaje,
-                            Toast.LENGTH_LONG).show();
-                    // Enviar código de falla
-                    break;
+              @Override
+              public String getBodyContentType() {
+                return "application/json; charset=utf-8" + getParamsEncoding();
+              }
             }
-        } catch (JSONException e) {
-            e.printStackTrace();
-        }
+    );
+  }
+  private void procesarRespuestaActualizar(JSONObject response) {
 
+    try {
+      // Obtener estado
+      String estado = response.getString("estado");
+      // Obtener mensaje
+      String mensaje = response.getString("mensaje");
+
+      switch (estado) {
+        case "1":
+          // Mostrar mensaje
+          Toast.makeText(
+                  getApplicationContext(),
+                  mensaje,
+                  Toast.LENGTH_LONG).show();
+          break;
+
+        case "2":
+          // Mostrar mensaje
+          Toast.makeText(
+                  getApplicationContext(),
+                  mensaje,
+                  Toast.LENGTH_LONG).show();
+          // Enviar código de falla
+          break;
+      }
+    } catch (JSONException e) {
+      e.printStackTrace();
     }
+
+  }
 }

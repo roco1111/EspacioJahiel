@@ -822,54 +822,54 @@ public class fragment_presentacion extends Fragment implements LoginInteractor.C
 
     }
 
-   private void voley(String newURL,final Context context){
-       // Actualizar datos en el servidor
-       VolleySingleton.getInstance(context).addToRequestQueue(
-               myRequest = new JsonObjectRequest(
-                       Request.Method.GET,
-                       newURL,
-                       //jobject,
-                       null,
-                       new Response.Listener<JSONObject>() {
-                           @Override
-                           public void onResponse(JSONObject response) {
-                               // Procesar la respuesta del servidor
+    private void voley(String newURL,final Context context){
+        // Actualizar datos en el servidor
+        VolleySingleton.getInstance(context).addToRequestQueue(
+                myRequest = new JsonObjectRequest(
+                        Request.Method.GET,
+                        newURL,
+                        //jobject,
+                        null,
+                        new Response.Listener<JSONObject>() {
+                            @Override
+                            public void onResponse(JSONObject response) {
+                                // Procesar la respuesta del servidor
 
-                               procesarRespuestaGuardar(response, context);
-                           }
-                       },
-                       new Response.ErrorListener() {
-                           @Override
-                           public void onErrorResponse(VolleyError error) {
-                               Log.d(TAG, "Error Volley: " + error.getMessage());
-                           }
-                       }
-
-
-               ) {
-
-                   @Override
-                   public Map<String, String> getHeaders() {
-                       Map<String, String> headers = new HashMap<>();
-                       headers.put("Content-Type", "application/json; charset=utf-8");
-                       return headers;
-                   }
-
-                   @Override
-                   public String getBodyContentType() {
-                       return "application/json; charset=utf-8";
-                   }
+                                procesarRespuestaGuardar(response, context);
+                            }
+                        },
+                        new Response.ErrorListener() {
+                            @Override
+                            public void onErrorResponse(VolleyError error) {
+                                Log.d(TAG, "Error Volley: " + error.getMessage());
+                            }
+                        }
 
 
-               }
+                ) {
 
-       );
-       myRequest.setRetryPolicy(new DefaultRetryPolicy(
-               100000,
-               5,//DefaultRetryPolicy.DEFAULT_MAX_RETRIES
-               DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
+                    @Override
+                    public Map<String, String> getHeaders() {
+                        Map<String, String> headers = new HashMap<>();
+                        headers.put("Content-Type", "application/json; charset=utf-8");
+                        return headers;
+                    }
 
-   }
+                    @Override
+                    public String getBodyContentType() {
+                        return "application/json; charset=utf-8";
+                    }
+
+
+                }
+
+        );
+        myRequest.setRetryPolicy(new DefaultRetryPolicy(
+                100000,
+                5,//DefaultRetryPolicy.DEFAULT_MAX_RETRIES
+                DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
+
+    }
 
     private void procesarRespuestaGuardar(JSONObject response, Context context) {
 
@@ -951,8 +951,8 @@ public class fragment_presentacion extends Fragment implements LoginInteractor.C
 
         builder.setView(v);
 
-         tvMail =  v.findViewById(R.id.editTextUsuario);
-         tvClave =  v.findViewById(R.id.editTextClave);
+        tvMail =  v.findViewById(R.id.editTextUsuario);
+        tvClave =  v.findViewById(R.id.editTextClave);
         olvidaste =  v.findViewById(R.id.olvidaste);
 
         Button signin =  v.findViewById(R.id.buttonIngreso);
@@ -1249,7 +1249,7 @@ public class fragment_presentacion extends Fragment implements LoginInteractor.C
                     editor.apply();
                     actualizar_token(id_firebase);
                     act.startActivity(intent2);
-                   // getActivity().finish();
+                    // getActivity().finish();
                     editor.commit();
                     break;
 
