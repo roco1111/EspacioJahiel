@@ -7,14 +7,16 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
-import android.support.v4.content.LocalBroadcastManager;
-import android.support.v7.widget.RecyclerView;
+
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+
+import androidx.fragment.app.Fragment;
+import androidx.localbroadcastmanager.content.LocalBroadcastManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.rosario.hp.espaciojahiel.R;
 
@@ -87,9 +89,9 @@ public class PushNotificationsFragment extends Fragment implements PushNotificat
         View root = inflater.inflate(R.layout.fragment_main_basico, container, false);
 
         mNotificatiosAdapter = new PushNotificationsAdapter();
-        mRecyclerView = (RecyclerView) root.findViewById(R.id.reciclador);
-        texto = (TextView) root.findViewById(R.id.TwEmpty);
-        imagen = (ImageView) root.findViewById(R.id.ImEmpty);
+        mRecyclerView =  root.findViewById(R.id.reciclador);
+        texto =  root.findViewById(R.id.TwEmpty);
+        imagen = root.findViewById(R.id.ImEmpty);
 
         imagen.setVisibility(root.INVISIBLE);
         texto.setVisibility(root.INVISIBLE);

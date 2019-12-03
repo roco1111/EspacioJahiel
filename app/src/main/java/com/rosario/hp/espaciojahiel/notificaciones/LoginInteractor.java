@@ -1,14 +1,14 @@
 package com.rosario.hp.espaciojahiel.notificaciones;
 
-import android.app.Activity;
 import android.content.Context;
-import android.content.pm.LauncherApps;
+
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
-import android.support.annotation.NonNull;
+
 import android.text.TextUtils;
 import android.util.Patterns;
-import android.view.ActionMode;
+
+import androidx.annotation.NonNull;
 
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.GoogleApiAvailability;

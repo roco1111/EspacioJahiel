@@ -35,6 +35,7 @@
     <string name="fecha_nac_ejemplo">01/01/1900</string>
     <string name="nombre_transicion_imagen">imagen_compartida</string>
     <string name="ingreso">Ingrese la fecha de nacimiento de quien desea ver su arcangel</string>
+    <string name="ingreso_fecha">Ingrese la fecha en el campo o haga click en la torta</string>
 
     <!-- botones -->
     <string name="ver">Ver</string>
@@ -48,7 +49,7 @@
     <string name="favorito">Favorito</string>
 
     <!-- opciones -->
-    <string name="mensaje_canalizado">Mensaje Canalizado del Día</string>
+    <string name="mensaje_canalizado">Mensaje Canalizado Semanal</string>
     <string name="mi_arcangel">Mi Arcangel</string>
     <string name="mi_arcangel_general">Cual es Tu Arcangel</string>
     <string name="videos_meditacion">Videos de meditación</string>

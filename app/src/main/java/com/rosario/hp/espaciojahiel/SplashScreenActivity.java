@@ -8,15 +8,17 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.ActivityInfo;
+import android.content.pm.ShortcutInfo;
+import android.content.pm.ShortcutManager;
+import android.graphics.drawable.Icon;
+import android.os.Build;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
-import android.support.multidex.MultiDex;
+
 import android.view.Window;
 
-import com.google.firebase.messaging.FirebaseMessaging;
-import com.rosario.hp.espaciojahiel.R;
-import com.google.firebase.auth.AuthCredential;
-import com.google.firebase.auth.EmailAuthCredential;
+import androidx.multidex.MultiDex;
+
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.iid.FirebaseInstanceId;
@@ -102,15 +104,26 @@ public class SplashScreenActivity extends Activity {
 /*
 * Código creación acceso directo
 */
-            Intent shortcutIntent = new Intent(actividad, SplashScreenActivity.class);
-            shortcutIntent.setAction(Intent.ACTION_MAIN);
-            Intent intent = new Intent();
-            intent.putExtra(Intent.EXTRA_SHORTCUT_INTENT, shortcutIntent);
-            intent.putExtra(Intent.EXTRA_SHORTCUT_NAME,  getString(R.string.app_name));
-            intent.putExtra(Intent.EXTRA_SHORTCUT_ICON_RESOURCE,Intent.ShortcutIconResource.fromContext(actividad, R.mipmap.ic_launcher_round));
-            intent.setAction("com.android.launcher.action.INSTALL_SHORTCUT");
-            actividad.sendBroadcast(intent);
-
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+                Intent shortcutIntent = new Intent(actividad, SplashScreenActivity.class);
+                ShortcutManager shortcutManager = getSystemService(ShortcutManager.class);
+                ShortcutInfo.Builder mShortcutInfo = new ShortcutInfo.Builder(SplashScreenActivity.this, getString(R.string.app_name));
+                mShortcutInfo.setShortLabel(getString(R.string.app_name));
+                mShortcutInfo.setLongLabel(getString(R.string.app_name));
+                mShortcutInfo.setIcon(Icon.createWithResource(getApplicationContext(), R.mipmap.ic_launcher_round));
+                shortcutIntent.setAction(Intent.ACTION_CREATE_SHORTCUT);
+                mShortcutInfo.setIntent(shortcutIntent);
+                shortcutManager.requestPinShortcut(mShortcutInfo.build(),null);
+            }else{
+                Intent shortcutIntent = new Intent(actividad, SplashScreenActivity.class);
+                shortcutIntent.setAction(Intent.ACTION_MAIN);
+                Intent intent = new Intent();
+                intent.putExtra(Intent.EXTRA_SHORTCUT_INTENT, shortcutIntent);
+                intent.putExtra(Intent.EXTRA_SHORTCUT_NAME, getString(R.string.app_name));
+                intent.putExtra(Intent.EXTRA_SHORTCUT_ICON_RESOURCE, Intent.ShortcutIconResource.fromContext(actividad, R.mipmap.ic_launcher_round));
+                intent.setAction("com.android.launcher.action.INSTALL_SHORTCUT");
+                actividad.sendBroadcast(intent);
+            }
 /*
 * Indico que ya se ha creado el acceso directo para que no se vuelva a crear mas
 */

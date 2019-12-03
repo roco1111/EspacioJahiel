@@ -5,7 +5,7 @@ import android.app.ProgressDialog;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
-import android.support.v4.app.Fragment;
+
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -14,6 +14,8 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import androidx.fragment.app.Fragment;
 
 import com.android.volley.DefaultRetryPolicy;
 import com.android.volley.Request;
@@ -138,7 +140,6 @@ public class mensajesCanalizadosFragment extends Fragment {
         HashMap<String, String> map = new HashMap<>();// Mapeo previo
 
         map.put("id_usuario", ls_cod_usuario);
-        map.put("fecha", ls_fecha);
 
         // Crear nuevo objeto Json basado en el mapa
         JSONObject jobject = new JSONObject(map);
@@ -240,7 +241,6 @@ public class mensajesCanalizadosFragment extends Fragment {
 
 
         map.put("id_usuario", ls_cod_usuario);
-        map.put("fecha", ls_fecha);
 
         // Crear nuevo objeto Json basado en el mapa
         JSONObject jobject = new JSONObject(map);
@@ -270,7 +270,7 @@ public class mensajesCanalizadosFragment extends Fragment {
                 getInstance(getActivity()).
                 addToRequestQueue(
                         new JsonObjectRequest(
-                                Request.Method.GET,
+                                Request.Method.POST,
                                 newURL,
                                 null,
                                 new Response.Listener<JSONObject>() {

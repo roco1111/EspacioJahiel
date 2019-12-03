@@ -4,16 +4,19 @@ import android.app.Dialog;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
-import android.support.design.widget.NavigationView;
-import android.support.v4.app.Fragment;
-import android.support.v4.view.GravityCompat;
-import android.support.v4.widget.DrawerLayout;
-import android.support.v7.app.ActionBar;
-import android.support.v7.app.AppCompatActivity;
+
 import android.view.MenuItem;
-import android.support.v7.widget.Toolbar;
+
+
+import androidx.appcompat.app.ActionBar;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
+import androidx.core.view.GravityCompat;
+import androidx.drawerlayout.widget.DrawerLayout;
+import androidx.fragment.app.Fragment;
 
 import com.google.android.gms.common.GoogleApiAvailability;
+import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.auth.FirebaseAuth;
 import com.rosario.hp.espaciojahiel.Fragment.acercaFragment;
 import com.rosario.hp.espaciojahiel.Fragment.arcangelGeneralFragment;
@@ -58,8 +61,14 @@ public class activity_inicio extends AppCompatActivity implements fragment_prese
                     fragment = new acercaFragment();
                     args1.putInt(acercaFragment.ARG_ARTICLES_NUMBER, posicion);
                     break;
+                default:
+                    fragment = new fragment_presentacion();
+                    args1.putInt(fragment_presentacion.ARG_ARTICLES_NUMBER, posicion);
+
             }
-            fragment.setArguments(args1);
+            if(args1 != null ) {
+                fragment.setArguments(args1);
+            }
             getSupportFragmentManager().beginTransaction()
                     .replace(R.id.main_content, fragment)
                     .commit();

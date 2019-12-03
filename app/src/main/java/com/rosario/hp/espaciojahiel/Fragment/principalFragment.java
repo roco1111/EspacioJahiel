@@ -1,17 +1,25 @@
 package com.rosario.hp.espaciojahiel.Fragment;
 
 import android.app.Activity;
+import android.content.ActivityNotFoundException;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.res.Resources;
+import android.net.Uri;
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
+import android.preference.PreferenceManager;
+
 import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
+import androidx.fragment.app.Fragment;
+
 import com.rosario.hp.espaciojahiel.R;
+import com.rosario.hp.espaciojahiel.WebActivity;
 import com.rosario.hp.espaciojahiel.activity_arcangel;
 import com.rosario.hp.espaciojahiel.activity_arcangel_general;
 import com.rosario.hp.espaciojahiel.activity_espacio;
@@ -34,6 +42,10 @@ public class principalFragment extends Fragment {
     TextView tu_arcangel;
     TextView espacio;
     Activity activity;
+    ImageView instagram;
+    ImageView facebook;
+    ImageView youtube;
+    ImageView pagina;
 
     public principalFragment(){
         // Constructor vacío
@@ -53,6 +65,10 @@ public class principalFragment extends Fragment {
         fondos_pantalla = rootView.findViewById(R.id.fondos_pantalla);
         espacio = rootView.findViewById(R.id.espacios);
         tu_arcangel = rootView.findViewById(R.id.tu_arcangel);
+        instagram = rootView.findViewById(R.id.instagram);
+        facebook = rootView.findViewById(R.id.imageButtonFace);
+        youtube = rootView.findViewById(R.id.youtube);
+        pagina = rootView.findViewById(R.id.imageViewpagina);
 
         activity = getActivity();
 
@@ -61,6 +77,72 @@ public class principalFragment extends Fragment {
         Resources res = getActivity().getApplicationContext().getResources();
 
         final Bundle args1 = new Bundle();
+
+        instagram.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Uri uri = Uri.parse("https://instagram.com/_u/espaciojahiel");
+                Intent likeIng = new Intent(Intent.ACTION_VIEW, uri);
+
+                likeIng.setPackage("com.instagram.android");
+
+                try {
+                    startActivity(likeIng);
+                } catch (ActivityNotFoundException e) {
+                    startActivity(new Intent(Intent.ACTION_VIEW,
+                            Uri.parse("https://instagram.com/espaciojahiel")));
+                }
+            }
+        });
+        youtube.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Uri uri = Uri.parse("https://youtube.com/user/silvanaandreasotelo");
+                Intent likeIng = new Intent(Intent.ACTION_VIEW, uri);
+
+                likeIng.setPackage("com.google.android.youtube");
+
+                try {
+                    startActivity(likeIng);
+                } catch (ActivityNotFoundException e) {
+                    startActivity(new Intent(Intent.ACTION_VIEW,
+                            Uri.parse("https://youtube.com/user/silvanaandreasotelo")));
+                }
+            }
+        });
+
+        pagina.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                String ls_link;
+
+                ls_link = "http://espaciojahiel.com/";
+
+                SharedPreferences settings = PreferenceManager.getDefaultSharedPreferences(getContext());
+                SharedPreferences.Editor editor = settings.edit();
+
+                editor.putString("url", ls_link);
+                editor.apply();
+
+                Intent intent = new Intent(getContext(), WebActivity.class);
+                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                getActivity().startActivity(intent);
+                editor.commit();
+            }
+        });
+
+        facebook.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent facebookAppIntent;
+                try { facebookAppIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("fb://page/211895659607269"));
+                    startActivity(facebookAppIntent); }
+                catch (ActivityNotFoundException e)
+                { facebookAppIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://facebook.com/pg/espacioangelicojahiel"));
+                startActivity(facebookAppIntent); }
+            }
+        });
 
 
         mensaje_canalizado.setOnClickListener(new View.OnClickListener() {

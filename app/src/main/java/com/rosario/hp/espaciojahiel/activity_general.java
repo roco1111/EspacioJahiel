@@ -4,16 +4,16 @@ package com.rosario.hp.espaciojahiel;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
-import android.support.v4.app.Fragment;
-import android.support.v7.app.ActionBar;
-import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
 
-import com.google.firebase.iid.FirebaseInstanceId;
+import androidx.appcompat.app.ActionBar;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
+import androidx.fragment.app.Fragment;
+
 import com.rosario.hp.espaciojahiel.Fragment.acercaFragment;
 import com.rosario.hp.espaciojahiel.Fragment.datosUsuarios;
 import com.rosario.hp.espaciojahiel.Fragment.imagenesUsuarioFragment;
-import com.rosario.hp.espaciojahiel.Fragment.mensajesCanalizadosFragment;
+
 import com.rosario.hp.espaciojahiel.Fragment.mensajesUsuarioFragment;
 import com.rosario.hp.espaciojahiel.Fragment.notificacionesFragment;
 import com.rosario.hp.espaciojahiel.Fragment.principalFragment;

@@ -38,7 +38,7 @@
             android:layout_marginRight="10dp"
             android:layout_marginBottom="10dp">
 
-        <android.support.design.widget.FloatingActionButton
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
             android:id="@+id/buttonFondo"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -62,7 +62,7 @@
             android:layout_marginEnd="105dp"
             android:layout_marginStart="65dp"
             android:orientation="vertical">
-            <android.support.design.widget.FloatingActionButton
+            <com.google.android.material.floatingactionbutton.FloatingActionButton
                 android:id="@+id/buttonDescarga"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -85,7 +85,7 @@
             android:layout_marginEnd="105dp"
             android:layout_marginStart="65dp"
             android:orientation="vertical">
-            <android.support.design.widget.FloatingActionButton
+            <com.google.android.material.floatingactionbutton.FloatingActionButton
                 android:id="@+id/buttonFavorito"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"

@@ -2,13 +2,12 @@ package com.rosario.hp.espaciojahiel;
 
 
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
-import android.support.v7.app.ActionBar;
-import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
 
-import com.rosario.hp.espaciojahiel.Fragment.eventosFragment;
-import com.rosario.hp.espaciojahiel.Fragment.mensajePropioFragment;
+import androidx.appcompat.app.ActionBar;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
+import androidx.fragment.app.Fragment;
+
 import com.rosario.hp.espaciojahiel.Fragment.mensajesCanalizadosFragment;
 
 public class activity_mensaje extends AppCompatActivity {
@@ -32,7 +31,7 @@ public class activity_mensaje extends AppCompatActivity {
                     .commit();
 
         }
-        getSupportActionBar().setTitle("Mensaje Canalizado del día");
+        getSupportActionBar().setTitle("Mensaje Canalizado");
 
 }
 

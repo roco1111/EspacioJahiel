@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
@@ -17,8 +18,7 @@
         android:layout_marginTop="6dp"
         android:scaleType="centerCrop"
         android:src="@drawable/angel"
-        app:border_color="@android:color/white"
-        app:border_width="1dp" />
+ />
 
     <Button
         android:id="@+id/buttonVer"

@@ -9,10 +9,10 @@ import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.error.VolleyError;
 import com.android.volley.request.JsonObjectRequest;
+import com.google.firebase.messaging.FirebaseMessagingService;
 import com.rosario.hp.espaciojahiel.include.Constantes;
 import com.rosario.hp.espaciojahiel.include.VolleySingleton;
 import com.google.firebase.iid.FirebaseInstanceId;
-import com.google.firebase.iid.FirebaseInstanceIdService;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -22,12 +22,14 @@ import java.net.URLEncoder;
 import java.util.HashMap;
 import java.util.Map;
 
-public class FCMInstanceIdService extends FirebaseInstanceIdService {
+import static com.facebook.FacebookSdk.getApplicationContext;
+
+public class FCMInstanceIdService extends FirebaseMessagingService {
 
   private static final String TAG = "MyFirebaseIIDService";
   private String codUsuario;
 
-  @Override
+
   public void onTokenRefresh() {
     String refreshedToken = FirebaseInstanceId.getInstance().getToken();
     Log.d(TAG, "Refreshed token: " + refreshedToken);

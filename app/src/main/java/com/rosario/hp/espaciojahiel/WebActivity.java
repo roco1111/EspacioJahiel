@@ -3,9 +3,10 @@ package com.rosario.hp.espaciojahiel;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
-import android.support.v7.app.AppCompatActivity;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 public class WebActivity extends AppCompatActivity {
     String url;

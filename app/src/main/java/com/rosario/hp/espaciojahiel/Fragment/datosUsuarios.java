@@ -16,8 +16,7 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.provider.MediaStore;
-import android.support.annotation.NonNull;
-import android.support.v4.app.ActivityCompat;
+
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -30,7 +29,11 @@ import android.widget.DatePicker;
 import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
-import android.support.v4.app.Fragment;
+
+
+import androidx.annotation.NonNull;
+import androidx.core.app.ActivityCompat;
+import androidx.fragment.app.Fragment;
 
 import com.android.volley.DefaultRetryPolicy;
 import com.android.volley.Request;

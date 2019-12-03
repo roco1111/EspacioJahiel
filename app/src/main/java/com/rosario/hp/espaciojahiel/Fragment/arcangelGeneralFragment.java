@@ -1,12 +1,8 @@
 package com.rosario.hp.espaciojahiel.Fragment;
 
 import android.app.DatePickerDialog;
-import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.preference.PreferenceManager;
-import android.support.v4.app.Fragment;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
+
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -16,6 +12,11 @@ import android.widget.DatePicker;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
+
+import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.android.volley.Request;
 import com.android.volley.Response;
@@ -57,6 +58,7 @@ public class arcangelGeneralFragment extends Fragment {
     private RecyclerView arcangel;
     private RecyclerView.LayoutManager lManager;
     private Integer dia;
+    Toast toast1;
 
     public arcangelGeneralFragment(){}
 
@@ -79,10 +81,10 @@ public class arcangelGeneralFragment extends Fragment {
         datos = new ArrayList<>();
 
         datos.clear();
-        arcangel arc = new arcangel("","Atención","Debe ingresar una fecha de nacimiento","");
+        arcangel arc = new arcangel("","","","");
         datos.add(arc);
 
-        ArcangelAdapter = new arcangelAdapter(datos,getContext(),0);
+        ArcangelAdapter = new arcangelAdapter(datos,getContext(),0,false);
         // Setear adaptador a la lista
         arcangel.setAdapter(ArcangelAdapter);
 
@@ -145,14 +147,14 @@ public class arcangelGeneralFragment extends Fragment {
 
         if (ls_fecha.equals("") || ls_fecha.equals("0000-00-00")){
             datos.clear();
-            arcangel arc = new arcangel("","Atención","Debe ingresar una fecha de nacimiento","");
+            arcangel arc = new arcangel("","","","");
             datos.add(arc);
 
-            ArcangelAdapter = new arcangelAdapter(datos,getContext(),0);
+            ArcangelAdapter = new arcangelAdapter(datos,getContext(),0,false);
             // Setear adaptador a la lista
             arcangel.setAdapter(ArcangelAdapter);
         }else {
-
+            boolean valida = true;
             SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
             Date datetxt1 = null;
             Calendar selectedDate1 = Calendar.getInstance();
@@ -160,36 +162,45 @@ public class arcangelGeneralFragment extends Fragment {
                 datetxt1 = sdf.parse(ls_fecha);
             } catch (ParseException e) {
                 e.printStackTrace();
+                valida = false;
+
             }
-            selectedDate1.setTime(datetxt1);
+            if(valida) {
 
-            dia = selectedDate1.get(Calendar.DAY_OF_WEEK);
+                selectedDate1.setTime(datetxt1);
 
-            String newURL = Constantes.GET_ARCANGEL_FECHA + "?id=" + String.valueOf(dia);
-            VolleySingleton.
-                    getInstance(getActivity()).
-                    addToRequestQueue(
-                            new JsonObjectRequest(
-                                    Request.Method.POST,
-                                    newURL,
-                                    null,
-                                    new Response.Listener<JSONObject>() {
+                dia = selectedDate1.get(Calendar.DAY_OF_WEEK);
 
-                                        @Override
-                                        public void onResponse(JSONObject response) {
-                                            // Procesar la respuesta Json
-                                            procesarRespuesta(response);
+                String newURL = Constantes.GET_ARCANGEL_FECHA + "?id=" + String.valueOf(dia);
+                VolleySingleton.
+                        getInstance(getActivity()).
+                        addToRequestQueue(
+                                new JsonObjectRequest(
+                                        Request.Method.POST,
+                                        newURL,
+                                        null,
+                                        new Response.Listener<JSONObject>() {
+
+                                            @Override
+                                            public void onResponse(JSONObject response) {
+                                                // Procesar la respuesta Json
+                                                procesarRespuesta(response);
+                                            }
+                                        },
+                                        new Response.ErrorListener() {
+                                            @Override
+                                            public void onErrorResponse(VolleyError error) {
+                                                Log.d(TAG, "Error Volley: " + error.toString());
+                                            }
                                         }
-                                    },
-                                    new Response.ErrorListener() {
-                                        @Override
-                                        public void onErrorResponse(VolleyError error) {
-                                            Log.d(TAG, "Error Volley: " + error.toString());
-                                        }
-                                    }
 
-                            )
-                    );
+                                )
+                        );
+            }else{
+                arcangelGeneralFragment.this.toast1 = Toast.makeText(arcangelGeneralFragment.this.getContext(), "Debe ingresar una fecha válida... " , Toast.LENGTH_LONG);
+                arcangelGeneralFragment.this.toast1.setGravity(19, 0, 0);
+                arcangelGeneralFragment.this.toast1.show();
+            }
         }
     }
     private void procesarRespuesta(JSONObject response) {
@@ -224,7 +235,7 @@ public class arcangelGeneralFragment extends Fragment {
 
                     }
 
-                    ArcangelAdapter = new arcangelAdapter(datos,getContext(),dia);
+                    ArcangelAdapter = new arcangelAdapter(datos,getContext(),dia,false);
                     // Setear adaptador a la lista
                     arcangel.setAdapter(ArcangelAdapter);
 

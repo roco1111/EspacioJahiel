@@ -1,29 +1,22 @@
 package com.rosario.hp.espaciojahiel.Adaptadores;
 
-import android.app.Activity;
+
 import android.content.Context;
-import android.content.Intent;
-import android.content.SharedPreferences;
-import android.graphics.Bitmap;
-import android.preference.PreferenceManager;
-import android.support.v7.widget.RecyclerView;
+
+
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.BaseAdapter;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.storage.FirebaseStorage;
-import com.google.firebase.storage.StorageReference;
+import androidx.recyclerview.widget.RecyclerView;
+
 import com.rosario.hp.espaciojahiel.Entidades.arcangel;
-import com.rosario.hp.espaciojahiel.Entidades.espacioAmigo;
-import com.rosario.hp.espaciojahiel.Entidades.imagen;
-import com.rosario.hp.espaciojahiel.GlideApp;
+
 import com.rosario.hp.espaciojahiel.R;
-import com.rosario.hp.espaciojahiel.activity_imagen;
-import com.rosario.hp.espaciojahiel.activity_mensaje;
+
 
 import java.util.ArrayList;
 import java.util.List;
@@ -33,12 +26,14 @@ public class arcangelAdapter extends RecyclerView.Adapter<arcangelAdapter.Holder
     private Context context;
     private List<arcangel> items;
     private Integer dia;
+    private Boolean visible;
 
 
-    public arcangelAdapter(List<arcangel> items, Context context, Integer dia) {
+    public arcangelAdapter(List<arcangel> items, Context context, Integer dia, Boolean visible) {
         this.context = context;
         this.items = items;
         this.dia = dia;
+        this.visible = visible;
     }
 
     @Override
@@ -53,6 +48,10 @@ public class arcangelAdapter extends RecyclerView.Adapter<arcangelAdapter.Holder
         //holder.imagenMensaje.setText(items.);//ver con firebase
         holder.textoMensaje.setText(items.get(position).getMensaje());
         holder.textoTitulo.setText(items.get(position).getTitulo());
+        if(!visible)
+        {
+            holder.configuracion.setVisibility(View.INVISIBLE);
+        }
 
     }
 
@@ -62,11 +61,13 @@ public class arcangelAdapter extends RecyclerView.Adapter<arcangelAdapter.Holder
         public TextView textoTitulo;
         public TextView textoMensaje;
         public ImageView imagen;
+        public ImageButton configuracion;
         public HolderArcangel(View v) {
             super(v);
             textoTitulo = v.findViewById(R.id.textViewTitulo);
             textoMensaje = v.findViewById(R.id.textViewtexto);
             imagen = v.findViewById(R.id.imageViewArcangel);
+            configuracion = v.findViewById(R.id.buttonConfiguracion);
 
         }
 

@@ -5,11 +5,12 @@ import android.content.SharedPreferences;
 import android.content.res.Resources;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
-import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+
+import androidx.fragment.app.Fragment;
 
 import com.rosario.hp.espaciojahiel.BuildConfig;
 import com.rosario.hp.espaciojahiel.R;
@@ -74,7 +75,7 @@ public class acercaFragment extends Fragment {
                 SharedPreferences settings = PreferenceManager.getDefaultSharedPreferences(getContext());
                 SharedPreferences.Editor editor = settings.edit();
 
-                editor.putString("url", "https://www.terclind.com.ar/movil/privacidad.php");
+                editor.putString("url", "https://app.espaciojahiel.com/movil_jahiel/privacidad.php");
                 editor.apply();
 
                 Intent intent = new Intent(getContext(), WebActivity.class);

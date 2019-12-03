@@ -1,10 +1,11 @@
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <android.support.v7.widget.Toolbar
+    <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar1"
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
@@ -35,7 +36,7 @@
             android:text="ACEPTAR"
             android:drawableRight="@drawable/ic_aceptar"/>
 
-    </android.support.v7.widget.Toolbar>
+    </androidx.appcompat.widget.Toolbar>
 
     <RelativeLayout
         android:id="@+id/main_content"

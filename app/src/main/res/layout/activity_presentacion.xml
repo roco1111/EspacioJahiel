@@ -21,7 +21,8 @@
         android:id="@+id/buttonFace"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="31dp" />
+        android:layout_marginTop="31dp"
+        tools:visibility="invisible" />
 
     <Button
         android:id="@+id/buttonIngreso"

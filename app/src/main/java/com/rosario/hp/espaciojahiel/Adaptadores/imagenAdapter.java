@@ -5,7 +5,6 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Bitmap;
 import android.preference.PreferenceManager;
-import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -21,10 +20,10 @@ import com.rosario.hp.espaciojahiel.Entidades.imagen;
 import com.rosario.hp.espaciojahiel.GlideApp;
 import com.rosario.hp.espaciojahiel.R;
 import com.rosario.hp.espaciojahiel.activity_imagen;
-import com.rosario.hp.espaciojahiel.activity_mensaje;
+
 
 import java.util.ArrayList;
-import java.util.List;
+
 
 public class imagenAdapter extends BaseAdapter
         implements ItemClickListener1 {

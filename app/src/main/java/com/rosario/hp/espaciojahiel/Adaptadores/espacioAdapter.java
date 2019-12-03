@@ -1,26 +1,19 @@
 package com.rosario.hp.espaciojahiel.Adaptadores;
 
+import android.content.ActivityNotFoundException;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.graphics.BitmapFactory;
-import android.os.AsyncTask;
+import android.net.Uri;
 import android.preference.PreferenceManager;
-import android.support.annotation.NonNull;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.graphics.Bitmap;
 
-import com.bumptech.glide.Glide;
-import com.bumptech.glide.load.engine.DiskCacheStrategy;
-import com.bumptech.glide.load.engine.Resource;
-import com.google.android.gms.tasks.OnFailureListener;
-import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
@@ -30,7 +23,6 @@ import com.rosario.hp.espaciojahiel.R;
 import com.rosario.hp.espaciojahiel.Entidades.espacioAmigo;
 import com.rosario.hp.espaciojahiel.WebActivity;
 
-import java.io.ByteArrayOutputStream;
 import java.util.ArrayList;
 
 public class espacioAdapter extends BaseAdapter
@@ -145,17 +137,20 @@ public class espacioAdapter extends BaseAdapter
                 String ls_link;
 
                 ls_link = Espacios.get(position).getInstagram();
+                String uri1 = "https://instagram.com/_u/" + ls_link;
+                String uri2 = "https://instagram.com/" + ls_link;
 
-                SharedPreferences settings = PreferenceManager.getDefaultSharedPreferences(context);
-                SharedPreferences.Editor editor = settings.edit();
+                Uri uri = Uri.parse(uri1);
+                Intent likeIng = new Intent(Intent.ACTION_VIEW, uri);
 
-                editor.putString("url", ls_link);
-                editor.apply();
+                likeIng.setPackage("com.instagram.android");
 
-                Intent intent = new Intent(context, WebActivity.class);
-                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                context.startActivity(intent);
-                editor.commit();
+                try {
+                    context.startActivity(likeIng);
+                } catch (ActivityNotFoundException e) {
+                    context.startActivity(new Intent(Intent.ACTION_VIEW,
+                            Uri.parse(uri2)));
+                }
             }
         });
 

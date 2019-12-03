@@ -6,18 +6,19 @@ import android.content.pm.ActivityInfo;
 import android.graphics.drawable.Drawable;
 import android.os.Build;
 import android.os.Bundle;
-import android.provider.MediaStore;
 import android.provider.Settings;
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentTransaction;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
+
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.android.volley.Request;
 import com.android.volley.Response;
@@ -31,7 +32,7 @@ import com.google.android.youtube.player.YouTubeThumbnailView;
 import com.rosario.hp.espaciojahiel.Entidades.videoYoutube;
 import com.rosario.hp.espaciojahiel.R;
 import com.rosario.hp.espaciojahiel.include.VolleySingleton;
-
+import com.google.android.youtube.player.YouTubePlayerSupportFragmentX;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -42,7 +43,7 @@ import java.util.List;
 public class listaVideosPrograma extends Fragment implements YouTubeThumbnailView.OnInitializedListener,
         YouTubeThumbnailLoader.OnThumbnailLoadedListener, YouTubePlayer.OnInitializedListener ,
         YouTubePlayer.OnFullscreenListener{
-    YouTubePlayerSupportFragment playerFragment;
+    YouTubePlayerSupportFragmentX playerFragment;
     public static final String ARG_ARTICLES_NUMBER = "videos";
     YouTubePlayer Player;
     YouTubeThumbnailView thumbnailView;
@@ -99,7 +100,7 @@ public class listaVideosPrograma extends Fragment implements YouTubeThumbnailVie
         VideoList.setAdapter(adapter);
         thumbnailView = new YouTubeThumbnailView(context);
         thumbnailView.initialize("AIzaSyBNmQNhSq4h1AAoS2iz5fSFxDhEfwrFYic", this);
-        playerFragment = YouTubePlayerSupportFragment.newInstance();
+        playerFragment = YouTubePlayerSupportFragmentX.newInstance();
         FragmentTransaction transaction = getChildFragmentManager().beginTransaction();
         transaction.replace(R.id.frame_fragment, playerFragment);
         transaction.commit();
@@ -110,6 +111,7 @@ public class listaVideosPrograma extends Fragment implements YouTubeThumbnailVie
     @Override
     public void onInitializationSuccess(YouTubePlayer.Provider provider, final YouTubePlayer youTubePlayer, boolean b) {
         Player=youTubePlayer;
+        Player.setShowFullscreenButton(false);
         Player.setOnFullscreenListener(fullScreenListener);
 
         if (mAutoRotation) {
@@ -182,7 +184,7 @@ public class listaVideosPrograma extends Fragment implements YouTubeThumbnailVie
             Player.cueVideo(video);
         } else {
             //getActivity().setRequestedOrientation(PORTRAIT_ORIENTATION);
-            //Player.cueVideo(video);
+            Player.cueVideo(video);
         }
 
 

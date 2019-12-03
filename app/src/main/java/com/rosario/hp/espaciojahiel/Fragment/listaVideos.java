@@ -4,43 +4,38 @@ import android.annotation.SuppressLint;
 import android.content.pm.ActivityInfo;
 import android.os.Build;
 import android.provider.Settings;
-import android.support.annotation.NonNull;
-import android.support.v4.app.Fragment;
+
 import android.content.Context;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
-import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentTransaction;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
+
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ArrayAdapter;
+
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
+
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.android.volley.Request;
-import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.error.VolleyError;
 import com.android.volley.request.JsonObjectRequest;
-import com.android.volley.toolbox.Volley;
 import com.google.android.youtube.player.YouTubeInitializationResult;
 import com.google.android.youtube.player.YouTubePlayer;
 import com.google.android.youtube.player.YouTubePlayerSupportFragment;
-import com.google.android.youtube.player.YouTubePlayerView;
+
+import com.google.android.youtube.player.YouTubePlayerSupportFragmentX;
 import com.google.android.youtube.player.YouTubeThumbnailLoader;
 import com.google.android.youtube.player.YouTubeThumbnailView;
-import com.rosario.hp.espaciojahiel.Entidades.espacioAmigo;
-import com.rosario.hp.espaciojahiel.Entidades.mensajeUsuario;
 import com.rosario.hp.espaciojahiel.Entidades.videoYoutube;
 import com.rosario.hp.espaciojahiel.R;
-import com.rosario.hp.espaciojahiel.include.Constantes;
 import com.rosario.hp.espaciojahiel.include.VolleySingleton;
-import com.rosario.hp.espaciojahiel.notificaciones.PushNotificationContract;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -52,8 +47,9 @@ import java.util.List;
 public class listaVideos extends Fragment implements YouTubeThumbnailView.OnInitializedListener,
         YouTubeThumbnailLoader.OnThumbnailLoadedListener, YouTubePlayer.OnInitializedListener ,
         YouTubePlayer.OnFullscreenListener{
-    YouTubePlayerSupportFragment playerFragment;
+
     public static final String ARG_ARTICLES_NUMBER = "videos";
+    YouTubePlayerSupportFragmentX playerFragment;
     YouTubePlayer Player;
     YouTubeThumbnailView thumbnailView;
     YouTubeThumbnailLoader thumbnailLoader;
@@ -106,7 +102,7 @@ public class listaVideos extends Fragment implements YouTubeThumbnailView.OnInit
         VideoList.setAdapter(adapter);
         thumbnailView = new YouTubeThumbnailView(context);
         thumbnailView.initialize("AIzaSyBNmQNhSq4h1AAoS2iz5fSFxDhEfwrFYic", this);
-        playerFragment = YouTubePlayerSupportFragment.newInstance();
+        playerFragment = YouTubePlayerSupportFragmentX.newInstance();
         FragmentTransaction transaction = getChildFragmentManager().beginTransaction();
         transaction.replace(R.id.frame_fragment, playerFragment);
         transaction.commit();
@@ -117,6 +113,7 @@ public class listaVideos extends Fragment implements YouTubeThumbnailView.OnInit
     @Override
     public void onInitializationSuccess(YouTubePlayer.Provider provider, final YouTubePlayer youTubePlayer, boolean b) {
         Player=youTubePlayer;
+        Player.setShowFullscreenButton(false);
         Player.setOnFullscreenListener(fullScreenListener);
 
         if (mAutoRotation) {

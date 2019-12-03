@@ -2,13 +2,15 @@ package com.rosario.hp.espaciojahiel;
 
 
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
-import android.support.v7.app.ActionBar;
-import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
+
+
+import androidx.appcompat.app.ActionBar;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
+import androidx.fragment.app.Fragment;
 
 import com.rosario.hp.espaciojahiel.Fragment.listaVideos;
-import com.rosario.hp.espaciojahiel.Fragment.mensajePropioFragment;
+
 
 public class activity_videos extends AppCompatActivity {
 
