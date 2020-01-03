@@ -1,5 +1,6 @@
 package com.rosario.hp.espaciojahiel.Fragment;
 
+import android.app.Activity;
 import android.app.DatePickerDialog;
 import android.os.Bundle;
 
@@ -7,6 +8,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.ImageButton;
@@ -38,6 +40,8 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 
+import static android.content.Context.INPUT_METHOD_SERVICE;
+
 public class arcangelGeneralFragment extends Fragment {
     private static final String TAG = arcangelGeneralFragment.class.getSimpleName();
     public static final String ARG_ARTICLES_NUMBER = "arcangel";
@@ -59,6 +63,7 @@ public class arcangelGeneralFragment extends Fragment {
     private RecyclerView.LayoutManager lManager;
     private Integer dia;
     Toast toast1;
+    private Activity activity;
 
     public arcangelGeneralFragment(){}
 
@@ -80,6 +85,8 @@ public class arcangelGeneralFragment extends Fragment {
         arcangel.setLayoutManager(lManager);
         datos = new ArrayList<>();
 
+        activity = getActivity();
+
         datos.clear();
         arcangel arc = new arcangel("","","","");
         datos.add(arc);
@@ -92,6 +99,7 @@ public class arcangelGeneralFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 cargarAdaptador();
+                hideSoftKeyboard();
             }
         });
 
@@ -99,7 +107,7 @@ public class arcangelGeneralFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 String ls_fecha = fecha_nac.getText().toString();
-                Date datetxt1 = null;
+                Date datetxt1 = Calendar.getInstance().getTime();
 
                 if(ls_fecha.equals("")) {
                     datetxt1 = Calendar.getInstance().getTime();
@@ -138,6 +146,13 @@ public class arcangelGeneralFragment extends Fragment {
         cargarAdaptador();
 
         return v;
+    }
+
+    public void hideSoftKeyboard() {
+        if(activity.getCurrentFocus()!=null) {
+            InputMethodManager inputMethodManager = (InputMethodManager) activity.getSystemService(INPUT_METHOD_SERVICE);
+            inputMethodManager.hideSoftInputFromWindow(activity.getCurrentFocus().getWindowToken(), 0);
+        }
     }
     public void cargarAdaptador() {
         // Petición GET

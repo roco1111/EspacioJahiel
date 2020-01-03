@@ -73,6 +73,7 @@ import com.android.volley.request.JsonObjectRequest;
 import com.android.volley.DefaultRetryPolicy;
 
 
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -412,7 +413,7 @@ public class fragment_presentacion extends Fragment implements LoginInteractor.C
 
         // Añadir parámetro a la URL del web service
         String newURL = Constantes.GET_BY_CLAVE + "?mail=" + ls_mail;
-
+        Log.d(TAG,newURL);
 
         // Realizar petición GET_BY_ID
         VolleySingleton.getInstance(context).addToRequestQueue(
@@ -447,36 +448,40 @@ public class fragment_presentacion extends Fragment implements LoginInteractor.C
 
         try {
             // Obtener atributo "mensaje"
-            String mensaje = response.getString("estado");
+            String estado = response.getString("estado");
 
-            switch (mensaje) {
+
+            switch (estado) {
                 case "1":
                     // Obtener objeto "usuario"
-                    JSONObject object = response.getJSONObject("usuario");
+                    JSONArray mensaje1 = response.getJSONArray("usuario");
+                    for(int i = 0; i < mensaje1.length(); i++) {
+                        Log.d(TAG, "usuario");
+                        //Parsear objeto
+                        JSONObject object = mensaje1.getJSONObject(i);
 
-                    //Parsear objeto
-                    usuario codigoUsuario = gson.fromJson(object.toString(), usuario.class);
+                        // Seteando valores en los views
+                        Log.d(TAG, "usuario2");
+                        ls_cod_usuario = object.getString("id");
+                        ls_nombre = object.getString("nombre");
+                        ls_fecha = object.getString("fecha_nac");
 
-                    // Seteando valores en los views
-                    ls_cod_usuario = codigoUsuario.getId();
-                    ls_nombre = codigoUsuario.getNombre();
-                    ls_fecha = codigoUsuario.getFecha_nac();
+                        Intent intent2 = new Intent(act, MainActivity.class);
+                        SharedPreferences settings = PreferenceManager.getDefaultSharedPreferences(act);
+                        SharedPreferences.Editor editor = settings.edit();
 
-                    Intent intent2 = new Intent(act,MainActivity.class);
-                    SharedPreferences settings = PreferenceManager.getDefaultSharedPreferences(act);
-                    SharedPreferences.Editor editor = settings.edit();
+                        editor.putString("cod_usuario", ls_cod_usuario);
+                        editor.putString("mail", ls_mail);
+                        editor.putString("nombre", ls_nombre);
+                        editor.putString("fecha_nac", ls_fecha);
 
-                    editor.putString("cod_usuario", ls_cod_usuario);
-                    editor.putString("mail", ls_mail);
-                    editor.putString("nombre", ls_nombre);
-                    editor.putString("fecha_nac", ls_fecha);
-
-                    editor.apply();
-                    actualizar_token(id_firebase);
-                    act.startActivity(intent2);
-                    //getActivity().finish();
-                    editor.commit();
-
+                        editor.apply();
+                        Log.d("Usuario", ls_cod_usuario);
+                        actualizar_token(id_firebase);
+                        act.startActivity(intent2);
+                        //getActivity().finish();
+                        editor.commit();
+                    }
                     break;
 
                 case "2":
@@ -1011,6 +1016,7 @@ public class fragment_presentacion extends Fragment implements LoginInteractor.C
                                         if (!task.isSuccessful()) {
 
                                             try {
+                                                Log.d(TAG,"error login");
                                                 throw task.getException();
 
                                             } catch (FirebaseAuthInvalidUserException e) {
@@ -1035,7 +1041,7 @@ public class fragment_presentacion extends Fragment implements LoginInteractor.C
                                             Log.w(TAG, "signInWithEmail:failed", task.getException());
                                         } else {
                                             String ls_clave;
-
+                                            Log.d(TAG,"successfull login");
                                             id_firebase = FirebaseInstanceId.getInstance().getToken();
                                             credential = EmailAuthProvider.getCredential(ls_mail, ls_contrasena);
                                             cargarDatos(getContext());
