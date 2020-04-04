@@ -6,8 +6,8 @@ android {
         applicationId "com.rosario.hp.espaciojahiel"
         minSdkVersion 18
         targetSdkVersion 29
-        versionCode 17
-        versionName "1.16"
+        versionCode 19
+        versionName "1.18"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         multiDexEnabled true
         setProperty("archivesBaseName", "EspacioJahiel")
@@ -96,5 +96,6 @@ dependencies {
     annotationProcessor 'com.github.bumptech.glide:compiler:4.8.0'
     implementation 'com.firebaseui:firebase-ui-storage:3.2.1'
     implementation 'com.pierfrancescosoffritti.androidyoutubeplayer:core:10.0.4'
+    implementation 'com.google.android.gms:play-services-maps:16.1.0'
 }
 apply plugin: 'com.google.gms.google-services'

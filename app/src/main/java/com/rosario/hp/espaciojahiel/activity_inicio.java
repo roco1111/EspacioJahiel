@@ -202,7 +202,7 @@ public class activity_inicio extends AppCompatActivity implements fragment_prese
         final ActionBar ab = getSupportActionBar();
         if (ab != null) {
             // Poner ícono del drawer toggle
-            ab.setHomeAsUpIndicator(R.drawable.ic_drawer);
+            ab.setHomeAsUpIndicator(getResources().getDrawable(R.drawable.ic_drawer));
             ab.setDisplayHomeAsUpEnabled(true);
         }
 

@@ -120,9 +120,6 @@ public class MainActivity extends AppCompatActivity {
 
     Bundle args1 = new Bundle();
 
-
-
-
     if (posicion != 0) {
 
       switch (posicion) {
@@ -213,10 +210,14 @@ public class MainActivity extends AppCompatActivity {
     Toolbar toolbar =  findViewById(R.id.toolbar);
     setSupportActionBar(toolbar);
     final ActionBar ab = getSupportActionBar();
+      Log.d(TAG ,"getSupportActionBar");
     if (ab != null) {
       // Poner ícono del drawer toggle
-      ab.setHomeAsUpIndicator(R.drawable.ic_drawer);
+        Log.d(TAG ,"drawer");
+      ab.setHomeAsUpIndicator(getResources().getDrawable(R.drawable.ic_drawer));
+      ab.setHomeButtonEnabled(true);
       ab.setDisplayHomeAsUpEnabled(true);
+      ab.setDisplayShowHomeEnabled(true);
     }
 
   }
@@ -250,11 +251,11 @@ public class MainActivity extends AppCompatActivity {
             boolean t = savedInstanceState.getBoolean("restore");
             int s = savedInstanceState.getInt("nAndroids");
         }*/
-    setToolbar();
 
     drawerLayout =  findViewById(R.id.drawer_layout);
     NavigationView navigationView =  findViewById(R.id.nav_view);
 
+    setToolbar();
 
     SharedPreferences settings1 = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
 

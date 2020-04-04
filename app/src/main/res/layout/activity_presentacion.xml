@@ -4,32 +4,34 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@drawable/alas_inicio">
 
     <ImageView
         android:id="@+id/imageView"
-        android:layout_width="match_parent"
+        android:layout_width="341dp"
+        android:layout_height="326dp"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
         android:layout_gravity="center_horizontal"
-        android:layout_marginTop="0dp"
-        android:layout_height="245dp"
-        app:srcCompat="@drawable/inicio" />
+        android:layout_marginTop="20dp"
+        app:srcCompat="@drawable/espacio_jahiel_ini" />
 
 
     <com.facebook.login.widget.LoginButton
         android:id="@+id/buttonFace"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="31dp"
+        android:layout_marginTop="1dp"
         tools:visibility="invisible" />
 
     <Button
         android:id="@+id/buttonIngreso"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-
-        android:layout_marginTop="24dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginTop="1dp"
         android:background="@drawable/boton"
         android:text="@string/menu_ingresar"
         android:textColor="@color/secondaryText"
@@ -40,6 +42,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="11dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="10dp"
         android:background="@drawable/boton"
         android:text="@string/menu_registro"
         android:textColor="@color/secondaryText" />

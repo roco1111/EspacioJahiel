@@ -110,17 +110,17 @@
 
       <TextView
           android:id="@+id/mensaje_canalizado"
-          android:layout_width="match_parent"
+          android:layout_width="314dp"
           android:layout_height="wrap_content"
+          android:layout_marginStart="10dp"
+          android:layout_marginEnd="10dp"
+          android:layout_marginBottom="10dp"
           android:fontFamily="@font/montserratregular"
           android:gravity="start"
           android:text="@string/mensaje_canalizado"
           android:textColor="@color/colorAccent"
           android:textSize="@dimen/opciones"
-          android:textStyle="bold"
-          android:layout_marginStart="10dp"
-          android:layout_marginEnd="10dp"
-          android:layout_marginBottom="10dp"/>
+          android:textStyle="bold" />
    </LinearLayout>
 
    <LinearLayout
@@ -139,17 +139,17 @@
 
       <TextView
           android:id="@+id/mi_arcangel"
-          android:layout_width="match_parent"
+          android:layout_width="316dp"
           android:layout_height="wrap_content"
+          android:layout_marginStart="10dp"
+          android:layout_marginEnd="10dp"
+          android:layout_marginBottom="10dp"
           android:fontFamily="@font/montserratregular"
           android:gravity="start"
           android:text="@string/mi_arcangel"
           android:textColor="@color/colorAccent"
           android:textSize="@dimen/opciones"
-          android:textStyle="bold"
-          android:layout_marginStart="10dp"
-          android:layout_marginEnd="10dp"
-          android:layout_marginBottom="10dp"/>
+          android:textStyle="bold" />
    </LinearLayout>
 
    <LinearLayout
@@ -168,17 +168,17 @@
 
       <TextView
           android:id="@+id/tu_arcangel"
-          android:layout_width="match_parent"
+          android:layout_width="310dp"
           android:layout_height="wrap_content"
+          android:layout_marginStart="10dp"
+          android:layout_marginEnd="10dp"
+          android:layout_marginBottom="10dp"
           android:fontFamily="@font/montserratregular"
           android:gravity="start"
           android:text="@string/mi_arcangel_general"
           android:textColor="@color/colorAccent"
           android:textSize="@dimen/opciones"
-          android:textStyle="bold"
-          android:layout_marginStart="10dp"
-          android:layout_marginEnd="10dp"
-          android:layout_marginBottom="10dp"/>
+          android:textStyle="bold" />
    </LinearLayout>
 
    <LinearLayout
@@ -198,17 +198,17 @@
 
       <TextView
           android:id="@+id/eventos"
-          android:layout_width="match_parent"
+          android:layout_width="330dp"
           android:layout_height="wrap_content"
+          android:layout_marginStart="10dp"
+          android:layout_marginEnd="10dp"
+          android:layout_marginBottom="10dp"
           android:fontFamily="@font/montserratregular"
           android:gravity="start"
           android:text="@string/eventos"
           android:textColor="@color/colorAccent"
           android:textSize="@dimen/opciones"
-          android:textStyle="bold"
-          android:layout_marginStart="10dp"
-          android:layout_marginEnd="10dp"
-          android:layout_marginBottom="10dp"/>
+          android:textStyle="bold" />
    </LinearLayout>
    <LinearLayout
        android:layout_width="match_parent"
@@ -224,13 +224,14 @@
           app:srcCompat="@drawable/ic_video"
           android:gravity="center"
           android:tint="@color/colorAccent"/>
+
       <TextView
           android:id="@+id/videos_meditacion"
+          android:layout_width="334dp"
+          android:layout_height="wrap_content"
           android:layout_marginStart="10dp"
           android:layout_marginEnd="10dp"
           android:layout_marginBottom="10dp"
-          android:layout_width="match_parent"
-          android:layout_height="wrap_content"
           android:fontFamily="@font/montserratregular"
           android:gravity="start"
           android:text="@string/videos_meditacion"

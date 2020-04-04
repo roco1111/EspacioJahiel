@@ -1079,19 +1079,23 @@ public class fragment_presentacion extends Fragment implements LoginInteractor.C
                             public void onClick(DialogInterface dialog, int wichButton) {
                                 String mail = input.getText().toString();
 
-                                FirebaseAuth.getInstance().sendPasswordResetEmail(mail)
-                                        .addOnCompleteListener(new OnCompleteListener<Void>() {
-                                            @Override
-                                            public void onComplete(@NonNull Task<Void> task) {
-                                                if (task.isSuccessful()) {
-                                                    Log.d(TAG, "Email sent.");
-                                                    Toast.makeText(getContext(),"Se han enviado instrucciones para resetear su clave",Toast.LENGTH_LONG).show();
-                                                }else{
-                                                    Toast.makeText(getContext(),"Fallo al resetear su clave",Toast.LENGTH_LONG).show();
-                                                }
-                                            }
-                                        });
+                                if(!mail.equals("")) {
 
+                                    FirebaseAuth.getInstance().sendPasswordResetEmail(mail)
+                                            .addOnCompleteListener(new OnCompleteListener<Void>() {
+                                                @Override
+                                                public void onComplete(@NonNull Task<Void> task) {
+                                                    if (task.isSuccessful()) {
+                                                        Log.d(TAG, "Email sent.");
+                                                        Toast.makeText(getContext(), "Se han enviado instrucciones para resetear su clave", Toast.LENGTH_LONG).show();
+                                                    } else {
+                                                        Toast.makeText(getContext(), "Fallo al resetear su clave", Toast.LENGTH_LONG).show();
+                                                    }
+                                                }
+                                            });
+                                }else{
+                                    Toast.makeText(getContext(), "Debe ingresar una dirección de mail para reestablecer la contraseña", Toast.LENGTH_LONG).show();
+                                }
 
                             }
                         })

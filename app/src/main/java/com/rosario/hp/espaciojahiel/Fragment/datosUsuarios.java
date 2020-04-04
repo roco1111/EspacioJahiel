@@ -40,6 +40,7 @@ import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.error.VolleyError;
 import com.android.volley.request.JsonObjectRequest;
+import com.bumptech.glide.Glide;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
@@ -50,7 +51,6 @@ import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
 import com.rosario.hp.espaciojahiel.Entidades.usuario;
-import com.rosario.hp.espaciojahiel.GlideApp;
 import com.rosario.hp.espaciojahiel.R;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -304,7 +304,7 @@ public class datosUsuarios extends Fragment {
         String mChild = "usuarios/" + ls_cod_usuario  + ".jpg";
         final StorageReference filepath = storageRef.child(mChild);
 
-        GlideApp.with(context)
+        Glide.with(context)
                 .load(filepath)
                 .into(imagen);
 

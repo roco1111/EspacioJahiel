@@ -1,6 +1,8 @@
 package com.rosario.hp.espaciojahiel;
 
 
+import android.app.Activity;
+import android.content.pm.ActivityInfo;
 import android.os.Bundle;
 
 
@@ -11,6 +13,8 @@ import androidx.fragment.app.Fragment;
 
 import com.rosario.hp.espaciojahiel.Fragment.listaVideos;
 
+import static android.content.pm.ActivityInfo.SCREEN_ORIENTATION_NOSENSOR;
+
 
 public class activity_videos extends AppCompatActivity {
 
@@ -18,6 +22,7 @@ public class activity_videos extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         // Obtener instancia FirebaseAuth
+
 
         setContentView(R.layout.lista_main_inicial);
 

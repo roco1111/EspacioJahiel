@@ -127,13 +127,13 @@ public class listaVideosPrograma extends Fragment implements YouTubeThumbnailVie
         if (!b) {
             VideoList.setVisibility(b?View.GONE:View.VISIBLE);
         }
-        /*
+
         Player.setOnFullscreenListener(new YouTubePlayer.OnFullscreenListener() {
             @Override
             public void onFullscreen(boolean b) {
                 VideoList.setVisibility(b?View.GONE:View.VISIBLE);
             }
-        });*/
+        });
 
     }
 

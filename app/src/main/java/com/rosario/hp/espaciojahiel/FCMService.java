@@ -50,8 +50,6 @@ public class FCMService extends  FirebaseMessagingService {
   public void onMessageReceived(RemoteMessage remoteMessage) {
     // Create and show notification
 
-
-
     sendNotification(remoteMessage.getData().get("body"), remoteMessage.getData().get("title"));
     sendNewPromoBroadcast(remoteMessage);
   }
@@ -100,96 +98,7 @@ public class FCMService extends  FirebaseMessagingService {
 
     notificationManager.notify(0 /* ID of notification */, notificationBuilder.build());
   }
-  public void guardar_notificacion(){
-    HashMap<String, String> map1 = new HashMap<>();
 
-    SharedPreferences settings = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
-    codUsuario = settings.getString("cod_usuario","0");
-
-    map1.put("titulo", titulo);
-    map1.put("texto", texto);
-    map1.put("fecha", ls_fecha);
-    map1.put("hora", ls_hora);
-    map1.put("id_usuario", codUsuario);
-
-    // Crear nuevo objeto Json basado en el mapa
-    JSONObject jobject = new JSONObject(map1);
-
-    StringBuilder encodedParams1 = new StringBuilder();
-    try {
-      for (Map.Entry<String, String> entry : map1.entrySet()) {
-        encodedParams1.append(URLEncoder.encode(entry.getKey(), "utf-8"));
-        encodedParams1.append('=');
-        encodedParams1.append(URLEncoder.encode(entry.getValue(), "utf-8"));
-        encodedParams1.append('&');
-      }
-    } catch (UnsupportedEncodingException uee) {
-      throw new RuntimeException("Encoding not supported: " + "utf-8", uee);
-    }
-
-    encodedParams1.setLength(Math.max(encodedParams1.length() - 1, 0));
-
-    Log.d(TAG, jobject.toString());
-
-    String newURL = Constantes.INSERT_NOTIFICACION + "?" + encodedParams1;
-
-    VolleySingleton.getInstance(getApplicationContext()).addToRequestQueue(
-            new JsonObjectRequest(
-                    Request.Method.GET,
-                    newURL,
-                    null,
-                    new Response.Listener<JSONObject>() {
-                      @Override
-                      public void onResponse(JSONObject response) {
-                        // Procesar la respuesta del servidor
-                        procesarRespuestaNotificacion(response);
-                      }
-                    },
-                    new Response.ErrorListener() {
-                      @Override
-                      public void onErrorResponse(VolleyError error) {
-                        Log.d(TAG, "Error Volley: " + error.getMessage());
-                        Toast.makeText(
-                                getApplicationContext(),
-                                "Error Volley: " + error.getMessage(),
-                                Toast.LENGTH_LONG).show();
-
-                      }
-                    }
-
-            )
-    );
-  }
-  private void procesarRespuestaNotificacion(JSONObject response) {
-
-    try {
-      // Obtener estado
-      String estado = response.getString("estado");
-      // Obtener mensaje
-      String mensaje = response.getString("mensaje");
-
-      switch (estado) {
-
-        case "1":
-          Toast.makeText(
-                  getApplicationContext(),
-                  "Notificación guardada",
-                  Toast.LENGTH_LONG).show();
-          break;
-        case "2":
-          // Mostrar mensaje
-          Toast.makeText(
-                  getApplicationContext(),
-                  mensaje,
-                  Toast.LENGTH_LONG).show();
-          break;
-
-      }
-    } catch (JSONException e) {
-      e.printStackTrace();
-    }
-
-  }
 
 
 

@@ -1,0 +1,357 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="bottom"
+    android:orientation="vertical"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:background="@color/secondaryText">
+   <RelativeLayout
+       android:layout_width="match_parent"
+       android:layout_height="wrap_content"
+       android:orientation="horizontal">
+      <RelativeLayout
+          android:layout_width="400dp"
+          android:layout_height="wrap_content"
+          android:id="@+id/opciones"
+          android:layout_alignParentTop="true"
+          android:orientation="vertical"
+          android:layout_marginStart="20dp"
+          android:layout_marginBottom="3dp"
+          >
+
+
+         <LinearLayout
+             android:layout_width="314dp"
+             android:layout_height="wrap_content"
+             android:paddingStart="@dimen/activity_horizontal_margin"
+             android:id="@+id/layuot_mensaje_canalizado"
+
+             >
+
+            <ImageView
+                android:id="@+id/imageView12"
+                android:layout_width="@dimen/icono_opcion"
+                android:layout_height="@dimen/icono_opcion"
+                app:srcCompat="@drawable/ic_mensaje"
+                android:gravity="center"
+                android:tint="@color/colorAccent"/>
+
+            <TextView
+                android:id="@+id/mensaje_canalizado"
+                android:layout_width="314dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_marginEnd="10dp"
+                android:layout_marginBottom="10dp"
+                android:fontFamily="@font/montserratregular"
+                android:gravity="start"
+                android:text="@string/mensaje_canalizado"
+                android:textColor="@color/colorAccent"
+                android:textSize="@dimen/opciones"
+                android:textStyle="bold" />
+         </LinearLayout>
+
+         <LinearLayout
+             android:layout_width="match_parent"
+             android:layout_height="wrap_content"
+             android:paddingStart="@dimen/activity_horizontal_margin"
+             android:id="@+id/layuot_mi_arcangel"
+             android:layout_below="@id/layuot_mensaje_canalizado">
+            <ImageView
+                android:id="@+id/imageView11"
+                android:layout_width="@dimen/icono_opcion"
+                android:layout_height="@dimen/icono_opcion"
+                app:srcCompat="@drawable/ic_menu_send"
+                android:gravity="center"
+                android:tint="@color/colorAccent"/>
+
+            <TextView
+                android:id="@+id/mi_arcangel"
+                android:layout_width="316dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_marginEnd="10dp"
+                android:layout_marginBottom="10dp"
+                android:fontFamily="@font/montserratregular"
+                android:gravity="start"
+                android:text="@string/mi_arcangel"
+                android:textColor="@color/colorAccent"
+                android:textSize="@dimen/opciones"
+                android:textStyle="bold" />
+         </LinearLayout>
+
+         <LinearLayout
+             android:layout_width="match_parent"
+             android:layout_height="wrap_content"
+             android:id="@+id/layuot_tu_arcangel"
+             android:paddingStart="@dimen/activity_horizontal_margin"
+             android:layout_below="@id/layuot_mi_arcangel">
+            <ImageView
+                android:id="@+id/imageView13"
+                android:layout_width="@dimen/icono_opcion"
+                android:layout_height="@dimen/icono_opcion"
+                app:srcCompat="@drawable/ic_nube"
+                android:gravity="center"
+                android:tint="@color/colorAccent"/>
+
+            <TextView
+                android:id="@+id/tu_arcangel"
+                android:layout_width="310dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_marginEnd="10dp"
+                android:layout_marginBottom="10dp"
+                android:fontFamily="@font/montserratregular"
+                android:gravity="start"
+                android:text="@string/mi_arcangel_general"
+                android:textColor="@color/colorAccent"
+                android:textSize="@dimen/opciones"
+                android:textStyle="bold" />
+         </LinearLayout>
+
+         <LinearLayout
+             android:layout_width="match_parent"
+             android:layout_height="wrap_content"
+             android:id="@+id/layuot_eventos"
+             android:paddingStart="@dimen/activity_horizontal_margin"
+             android:layout_below="@id/layuot_tu_arcangel">
+
+            <ImageView
+                android:id="@+id/imageView10"
+                android:layout_width="@dimen/icono_opcion"
+                android:layout_height="@dimen/icono_opcion"
+                app:srcCompat="@drawable/ic_eventos"
+                android:gravity="center"
+                android:tint="@color/colorAccent"/>
+
+            <TextView
+                android:id="@+id/eventos"
+                android:layout_width="330dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_marginEnd="10dp"
+                android:layout_marginBottom="10dp"
+                android:fontFamily="@font/montserratregular"
+                android:gravity="start"
+                android:text="@string/eventos"
+                android:textColor="@color/colorAccent"
+                android:textSize="@dimen/opciones"
+                android:textStyle="bold" />
+         </LinearLayout>
+         <LinearLayout
+             android:layout_width="match_parent"
+             android:layout_height="wrap_content"
+             android:paddingStart="@dimen/activity_horizontal_margin"
+             android:id="@+id/layuot_videos_meditacion"
+             android:layout_below="@id/layuot_eventos">
+
+            <ImageView
+                android:id="@+id/imageView9"
+                android:layout_width="@dimen/icono_opcion"
+                android:layout_height="@dimen/icono_opcion"
+                app:srcCompat="@drawable/ic_video"
+                android:gravity="center"
+                android:tint="@color/colorAccent"/>
+
+            <TextView
+                android:id="@+id/videos_meditacion"
+                android:layout_width="334dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_marginEnd="10dp"
+                android:layout_marginBottom="10dp"
+                android:fontFamily="@font/montserratregular"
+                android:gravity="start"
+                android:text="@string/videos_meditacion"
+                android:textColor="@color/colorAccent"
+                android:textSize="@dimen/opciones"
+                android:textStyle="bold" />
+         </LinearLayout>
+         <LinearLayout
+             android:layout_width="match_parent"
+             android:layout_height="wrap_content"
+             android:paddingStart="@dimen/activity_horizontal_margin"
+             android:id="@+id/layuot_videos_programa"
+             android:layout_below="@id/layuot_videos_meditacion">
+
+            <ImageView
+                android:id="@+id/imageView21"
+                android:layout_width="@dimen/icono_opcion"
+                android:layout_height="@dimen/icono_opcion"
+                app:srcCompat="@drawable/ic_video_programa"
+                android:gravity="center"
+                android:tint="@color/colorAccent"/>
+
+            <TextView
+                android:id="@+id/videos_programa"
+                android:layout_width="336dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_marginEnd="10dp"
+                android:layout_marginBottom="10dp"
+                android:fontFamily="@font/montserratregular"
+                android:gravity="start"
+                android:text="@string/video_programa"
+                android:textColor="@color/colorAccent"
+                android:textSize="@dimen/opciones"
+                android:textStyle="bold" />
+         </LinearLayout>
+
+         <LinearLayout
+             android:layout_width="match_parent"
+             android:layout_height="wrap_content"
+             android:paddingStart="@dimen/activity_horizontal_margin"
+             android:id="@+id/layuot_fondos_pantalla"
+             android:layout_below="@id/layuot_videos_programa"
+             android:orientation="horizontal">
+
+            <ImageView
+                android:id="@+id/imageView8"
+                android:layout_width="@dimen/icono_opcion"
+                android:layout_height="@dimen/icono_opcion"
+                app:srcCompat="@drawable/ic_baseline"
+                android:gravity="center"
+                android:tint="@color/colorAccent"/>
+
+            <TextView
+                android:id="@+id/fondos_pantalla"
+                android:layout_width="332dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_marginEnd="10dp"
+                android:layout_marginBottom="10dp"
+                android:fontFamily="@font/montserratregular"
+                android:gravity="start"
+                android:text="@string/fondos_pantalla"
+                android:textColor="@color/colorAccent"
+                android:textSize="@dimen/opciones"
+                android:textStyle="bold" />
+         </LinearLayout>
+
+         <LinearLayout
+             android:layout_width="match_parent"
+             android:paddingStart="@dimen/activity_horizontal_margin"
+             android:layout_height="wrap_content"
+             android:id="@+id/layuot_espacios"
+             android:layout_below="@id/layuot_fondos_pantalla"
+             android:orientation="horizontal">
+
+            <ImageView
+                android:id="@+id/imageView18"
+                android:layout_width="@dimen/icono_opcion"
+                android:layout_height="@dimen/icono_opcion"
+                app:srcCompat="@drawable/ic_bandera"
+                android:gravity="center"
+                android:tint="@color/colorAccent"/>
+
+            <TextView
+                android:id="@+id/espacios"
+                android:layout_width="330dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_marginEnd="10dp"
+                android:layout_marginBottom="10dp"
+                android:fontFamily="@font/montserratregular"
+                android:gravity="start"
+                android:text="@string/espacio"
+                android:textColor="@color/colorAccent"
+                android:textSize="@dimen/opciones"
+                android:textStyle="bold" />
+         </LinearLayout>
+      </RelativeLayout>
+      <RelativeLayout
+          android:layout_width="350dp"
+          android:layout_height="wrap_content"
+          android:id="@+id/imagenes"
+          android:orientation="vertical"
+          android:layout_alignParentRight="true"
+          android:layout_marginTop="4dp"
+          >
+
+         <ImageView
+             android:id="@+id/imagealas"
+             android:layout_width="134dp"
+             android:layout_height="159dp"
+            android:layout_centerHorizontal="true"
+             app:srcCompat="@drawable/espacio_jahiel" />
+
+         <ImageView
+             android:id="@+id/imageView14"
+             android:layout_width="wrap_content"
+             android:layout_height="wrap_content"
+             app:srcCompat="@drawable/espacio"
+             android:layout_below="@id/imagealas"
+             android:layout_centerHorizontal="true" />
+
+         <LinearLayout
+             android:id="@+id/boton"
+             android:layout_width="wrap_content"
+             android:layout_height="wrap_content"
+             android:layout_marginTop="7dp"
+             android:layout_centerHorizontal="true"
+
+             android:layout_below="@+id/imageView14">
+
+            <ImageView
+                android:id="@+id/imageButtonFace"
+                android:layout_width="@dimen/icono_redes"
+                android:layout_height="@dimen/icono_redes"
+
+                android:layout_marginEnd="8dp"
+                android:layout_marginRight="8dp"
+                app:srcCompat="@drawable/facebook" />
+
+
+            <ImageView
+                android:id="@+id/imageViewpagina"
+                android:layout_width="@dimen/icono_redes"
+                android:layout_height="@dimen/icono_redes"
+
+                android:layout_marginEnd="12dp"
+                android:layout_marginRight="12dp"
+                app:srcCompat="@drawable/mundo" />
+
+            <ImageView
+                android:id="@+id/youtube"
+                android:layout_width="@dimen/icono_redes"
+                android:layout_height="@dimen/icono_redes"
+
+                android:layout_marginEnd="12dp"
+                android:layout_marginRight="12dp"
+                app:srcCompat="@drawable/youtube" />
+            <ImageView
+                android:id="@+id/instagram"
+                android:layout_width="@dimen/icono_redes"
+                android:layout_height="@dimen/icono_redes"
+
+                android:layout_marginEnd="8dp"
+                android:layout_marginRight="8dp"
+                app:srcCompat="@drawable/instagram" />
+         </LinearLayout>
+
+
+      </RelativeLayout>
+   </RelativeLayout>
+
+
+
+
+
+
+</RelativeLayout>
+                                                                                                    
+                                                                                                    
+                                                                                                    
+                                                                                                    
+                                                                                                    
+                                                                                                    
+                                                                                                    
+                                                                                                    
+                                                                                                    
+                                                                                                    
+                                                                                                    
+                                                                                                    
+                                                                                                    
