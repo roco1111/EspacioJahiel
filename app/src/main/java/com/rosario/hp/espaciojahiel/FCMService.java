@@ -1,5 +1,6 @@
 package com.rosario.hp.espaciojahiel;
 
+import android.app.NotificationChannel;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.content.Context;
@@ -83,7 +84,19 @@ public class FCMService extends  FirebaseMessagingService {
             PendingIntent.FLAG_ONE_SHOT);
 
     Uri defaultSoundUri= RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION);
-    NotificationCompat.Builder notificationBuilder = new NotificationCompat.Builder(this)
+    NotificationCompat.Builder builder = null;
+    if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.O) {
+      int importance = NotificationManager.IMPORTANCE_DEFAULT;
+      NotificationManager notificationManager = (NotificationManager) getApplicationContext().getSystemService(Context.NOTIFICATION_SERVICE);
+      NotificationChannel notificationChannel = new NotificationChannel("ID", "Name", importance);
+      notificationManager.createNotificationChannel(notificationChannel);
+
+      builder = new NotificationCompat.Builder(getApplicationContext(), notificationChannel.getId());
+    } else {
+      builder = new NotificationCompat.Builder(getApplicationContext());
+    }
+
+    builder = builder
             .setSmallIcon(R.drawable.icono_toolbar)
             .setContentTitle(title)
             .setContentText(messageBody)
@@ -96,7 +109,7 @@ public class FCMService extends  FirebaseMessagingService {
     NotificationManager notificationManager =
             (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
 
-    notificationManager.notify(0 /* ID of notification */, notificationBuilder.build());
+    notificationManager.notify(0 /* ID of notification */, builder.build());
   }
 
 

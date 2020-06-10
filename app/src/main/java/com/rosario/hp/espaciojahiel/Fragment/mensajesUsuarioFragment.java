@@ -14,6 +14,7 @@ import android.widget.TextView;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import com.android.volley.Request;
 import com.android.volley.Response;
@@ -44,6 +45,7 @@ public class mensajesUsuarioFragment extends Fragment {
     private RecyclerView.LayoutManager lManager;
 
     private ArrayList<mensajeUsuario> datos;
+    SwipeRefreshLayout swipeRefreshLayout;
     private String ls_cod_usuario;
     public mensajesUsuarioFragment(){}
 
@@ -64,6 +66,8 @@ public class mensajesUsuarioFragment extends Fragment {
         imagen.setVisibility(v.INVISIBLE);
         texto.setVisibility(v.INVISIBLE);
 
+        swipeRefreshLayout = v.findViewById(R.id.swipeRefreshLayout);
+
 
         // Usar un administrador para LinearLayout
         lManager = new LinearLayoutManager(getActivity());
@@ -72,7 +76,15 @@ public class mensajesUsuarioFragment extends Fragment {
         SharedPreferences.Editor editor = settings.edit();
         ls_cod_usuario     = settings.getString("cod_usuario","");
 
-        // Cargar datos en el adaptador
+        swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                // Tarea a realizar
+
+                swipeRefreshLayout.setRefreshing(true);
+                cargarAdaptador();
+            }
+        });
         cargarAdaptador();
 
         return v;
@@ -100,6 +112,7 @@ public class mensajesUsuarioFragment extends Fragment {
                                     @Override
                                     public void onErrorResponse(VolleyError error) {
                                         Log.d(TAG, "Error Volley: " + error.toString());
+                                        swipeRefreshLayout.setRefreshing(false);
                                     }
                                 }
 
@@ -115,6 +128,7 @@ public class mensajesUsuarioFragment extends Fragment {
                 case "1": // EXITO
 
                     JSONArray mensaje = response.getJSONArray("usuario");
+                    datos.clear();
 
                     for(int i = 0; i < mensaje.length(); i++)
                     {JSONObject object = mensaje.getJSONObject(i);
@@ -150,6 +164,7 @@ public class mensajesUsuarioFragment extends Fragment {
 
                     break;
             }
+            swipeRefreshLayout.setRefreshing(false);
 
         } catch (JSONException e) {
             Log.d(TAG, e.getMessage());

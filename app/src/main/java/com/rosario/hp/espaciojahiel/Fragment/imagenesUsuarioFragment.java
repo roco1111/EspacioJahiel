@@ -17,6 +17,7 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import com.android.volley.Request;
 import com.android.volley.Response;
@@ -60,6 +61,7 @@ public class imagenesUsuarioFragment extends Fragment {
     private Bitmap loadedImage;
     GetImageToURL GetImageToURL;
     private String ls_cod_usuario;
+    SwipeRefreshLayout swipeRefreshLayout;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -103,6 +105,7 @@ public class imagenesUsuarioFragment extends Fragment {
         imagen.setVisibility(v.INVISIBLE);
         texto.setVisibility(v.INVISIBLE);
         images = new ArrayList<>();
+        swipeRefreshLayout = v.findViewById(R.id.swipeRefreshLayout);
 
         SharedPreferences settings = PreferenceManager.getDefaultSharedPreferences(getContext());
         SharedPreferences.Editor editor = settings.edit();
@@ -111,6 +114,16 @@ public class imagenesUsuarioFragment extends Fragment {
         editor.apply();
 
         editor.commit();
+
+        swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                // Tarea a realizar
+
+                swipeRefreshLayout.setRefreshing(true);
+                cargarAdaptador();
+            }
+        });
 
         cargarAdaptador();
 
@@ -147,6 +160,7 @@ public class imagenesUsuarioFragment extends Fragment {
                                     @Override
                                     public void onErrorResponse(VolleyError error) {
                                         Log.d(TAG, "Error Volley: " + error.toString());
+                                        swipeRefreshLayout.setRefreshing(false);
                                     }
                                 }
 
@@ -200,6 +214,7 @@ public class imagenesUsuarioFragment extends Fragment {
 
                     break;
             }
+            swipeRefreshLayout.setRefreshing(false);
 
         } catch (JSONException e) {
             Log.d(TAG, e.getMessage());

@@ -40,8 +40,7 @@ public class mensajePropioFragment extends Fragment {
     private TextView mensaje_canalizado;
     private ArrayList<mensajeCanalizado> datos;
     private ImageButton meGusta;
-    Calendar c1 = Calendar.getInstance();
-    private JsonObjectRequest myRequest;
+
     private String ls_mensaje;
     private ImageView imagen;
 

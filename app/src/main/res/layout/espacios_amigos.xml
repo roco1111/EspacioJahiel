@@ -8,17 +8,23 @@
     tools:context=".MainActivity"
     android:orientation="vertical">
 
-    <GridView
-        android:id="@+id/grid"
+    <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+        android:id="@+id/swipeRefreshLayout"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:columnWidth="240dp"
-        android:horizontalSpacing="@dimen/espacio_grilla"
-        android:numColumns="1"
-        android:padding="@dimen/espacio_grilla"
-        android:verticalSpacing="@dimen/espacio_grilla"
+        android:layout_height="match_parent">
 
-        />
+        <GridView
+            android:id="@+id/grid"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:columnWidth="240dp"
+            android:horizontalSpacing="@dimen/espacio_grilla"
+            android:numColumns="1"
+            android:padding="@dimen/espacio_grilla"
+            android:verticalSpacing="@dimen/espacio_grilla"
+
+            />
+    </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
     <ImageView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

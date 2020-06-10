@@ -33,6 +33,8 @@ import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.error.VolleyError;
 import com.android.volley.request.JsonObjectRequest;
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.facebook.AccessToken;
 import com.facebook.GraphRequest;
 import com.facebook.GraphResponse;
@@ -436,9 +438,16 @@ public class MainActivity extends AppCompatActivity {
     String mChild = "usuarios/" + id_usuario  + ".jpg";
     final StorageReference filepath = storageRef.child(mChild);
 
-    GlideApp.with(getApplicationContext())
-            .load(filepath)
-            .into(imagen);
+      clearGlideCache();
+
+      Glide.with(getApplicationContext())
+              .load(filepath)
+              .error(R.drawable.ic_account_circle)
+              .fallback(R.drawable.ic_account_circle)
+              .diskCacheStrategy(DiskCacheStrategy.ALL)
+              .skipMemoryCache(true)
+              .centerCrop ()
+              .into(imagen);
 
 
   }
@@ -575,4 +584,18 @@ public class MainActivity extends AppCompatActivity {
             .show();
 
   }
+
+    void clearGlideCache()
+    {
+        new Thread()
+        {
+            @Override
+            public void run()
+            {
+                Glide.get(getApplicationContext()).clearDiskCache();
+            }
+        }.start();
+
+        Glide.get(getApplicationContext()).clearMemory();
+    }
 }

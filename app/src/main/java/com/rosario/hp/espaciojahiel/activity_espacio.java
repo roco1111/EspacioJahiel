@@ -7,11 +7,13 @@ import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.Fragment;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import com.rosario.hp.espaciojahiel.Fragment.espacioFragment;
 
 
 public class activity_espacio extends AppCompatActivity {
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -31,6 +33,7 @@ public class activity_espacio extends AppCompatActivity {
                     .commit();
 
         }
+
         getSupportActionBar().setTitle("Espacios Amigos");
 
     }

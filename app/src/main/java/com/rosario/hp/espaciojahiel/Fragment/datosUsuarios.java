@@ -41,6 +41,7 @@ import com.android.volley.Response;
 import com.android.volley.error.VolleyError;
 import com.android.volley.request.JsonObjectRequest;
 import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
@@ -304,8 +305,15 @@ public class datosUsuarios extends Fragment {
         String mChild = "usuarios/" + ls_cod_usuario  + ".jpg";
         final StorageReference filepath = storageRef.child(mChild);
 
-        Glide.with(context)
+        clearGlideCache();
+
+        Glide.with(getActivity().getApplicationContext())
                 .load(filepath)
+                .error(R.drawable.ic_account_circle)
+                .fallback(R.drawable.ic_account_circle)
+                .diskCacheStrategy(DiskCacheStrategy.ALL)
+                .skipMemoryCache(true)
+                .centerCrop ()
                 .into(imagen);
 
     }
@@ -941,6 +949,20 @@ public class datosUsuarios extends Fragment {
             Log.d(TAG, e.getMessage());
         }
 
+    }
+
+    void clearGlideCache()
+    {
+        new Thread()
+        {
+            @Override
+            public void run()
+            {
+                Glide.get(getActivity().getApplicationContext()).clearDiskCache();
+            }
+        }.start();
+
+        Glide.get(getActivity().getApplicationContext()).clearMemory();
     }
 }
 

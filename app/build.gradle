@@ -6,8 +6,8 @@ android {
         applicationId "com.rosario.hp.espaciojahiel"
         minSdkVersion 18
         targetSdkVersion 29
-        versionCode 19
-        versionName "1.18"
+        versionCode 20
+        versionName "1.19"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         multiDexEnabled true
         setProperty("archivesBaseName", "EspacioJahiel")
@@ -91,11 +91,13 @@ dependencies {
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.1.0'
     implementation 'com.facebook.android:facebook-android-sdk:5.0.1'
     implementation 'de.hdodenhof:circleimageview:3.0.1'
-    implementation 'com.github.bumptech.glide:glide:4.8.0'
     annotationProcessor 'androidx.annotation:annotation:1.0.0'
-    annotationProcessor 'com.github.bumptech.glide:compiler:4.8.0'
+    implementation 'com.github.bumptech.glide:glide:4.9.0'
+    annotationProcessor 'com.github.bumptech.glide:compiler:4.9.0'
     implementation 'com.firebaseui:firebase-ui-storage:3.2.1'
     implementation 'com.pierfrancescosoffritti.androidyoutubeplayer:core:10.0.4'
     implementation 'com.google.android.gms:play-services-maps:16.1.0'
+    implementation 'jp.wasabeef:glide-transformations:3.3.0'
+    implementation 'androidx.swiperefreshlayout:swiperefreshlayout:1.0.0'
 }
 apply plugin: 'com.google.gms.google-services'

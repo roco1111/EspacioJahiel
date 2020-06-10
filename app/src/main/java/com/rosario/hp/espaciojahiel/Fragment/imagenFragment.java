@@ -75,6 +75,7 @@ public class imagenFragment extends Fragment {
     StorageReference storageRef;
     private FirebaseStorage storage;
     private FirebaseAuth mAuth;
+
     private static final int REQUEST_EXTERNAL_STORAGE = 1;
     private static String[] PERMISSIONS_STORAGE = {
             Manifest.permission.READ_EXTERNAL_STORAGE,

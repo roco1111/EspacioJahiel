@@ -15,6 +15,7 @@ import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import com.android.volley.Request;
 import com.android.volley.Response;
@@ -52,6 +53,7 @@ public class eventosFragment extends Fragment {
     private FirebaseAuth mAuth;
     private static FirebaseAuth.AuthStateListener mAuthListener;
     ArrayList<Bitmap> images;
+    SwipeRefreshLayout swipeRefreshLayout;
 
     public eventosFragment(){}
 
@@ -96,12 +98,21 @@ public class eventosFragment extends Fragment {
         imagen.setVisibility(v.INVISIBLE);
         texto.setVisibility(v.INVISIBLE);
         images = new ArrayList<>();
+        swipeRefreshLayout = v.findViewById(R.id.swipeRefreshLayout);
 
         // Usar un administrador para LinearLayout
         lManager = new LinearLayoutManager(getActivity());
         lista.setLayoutManager(lManager);
 
-        // Cargar datos en el adaptador
+        swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                // Tarea a realizar
+
+                swipeRefreshLayout.setRefreshing(true);
+                cargarAdaptador();
+            }
+        });
         cargarAdaptador();
 
         return v;
@@ -138,6 +149,7 @@ public class eventosFragment extends Fragment {
                                     @Override
                                     public void onErrorResponse(VolleyError error) {
                                         Log.d(TAG, "Error Volley: " + error.toString());
+                                        swipeRefreshLayout.setRefreshing(false);
                                     }
                                 }
 
@@ -153,7 +165,7 @@ public class eventosFragment extends Fragment {
                 case "1": // EXITO
 
                     JSONArray mensaje = response.getJSONArray("evento");
-
+                    datos.clear();
                     for(int i = 0; i < mensaje.length(); i++)
                     {JSONObject object = mensaje.getJSONObject(i);
                         evento ev = new evento("","","","","","");
@@ -211,6 +223,7 @@ public class eventosFragment extends Fragment {
 
                     break;
             }
+            swipeRefreshLayout.setRefreshing(false);
 
         } catch (JSONException e) {
             Log.d(TAG, e.getMessage());
