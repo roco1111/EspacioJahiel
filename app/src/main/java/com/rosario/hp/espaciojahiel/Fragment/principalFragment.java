@@ -46,6 +46,14 @@ public class principalFragment extends Fragment {
     ImageView facebook;
     ImageView youtube;
     ImageView pagina;
+    ImageView menu_mensaje;
+    ImageView menu_arcangel;
+    ImageView menu_tu_arcangel;
+    ImageView menu_eventos;
+    ImageView menu_meditacion;
+    ImageView menu_angel;
+    ImageView menu_fondo;
+    ImageView menu_espacio;
 
     public principalFragment(){
         // Constructor vacío
@@ -69,6 +77,14 @@ public class principalFragment extends Fragment {
         facebook = rootView.findViewById(R.id.imageButtonFace);
         youtube = rootView.findViewById(R.id.youtube);
         pagina = rootView.findViewById(R.id.imageViewpagina);
+        menu_mensaje = rootView.findViewById(R.id.imagen_mensaje);
+        menu_arcangel = rootView.findViewById(R.id.imagen_arcangel);
+        menu_tu_arcangel= rootView.findViewById(R.id.imagen_tu_arcangel);
+        menu_eventos = rootView.findViewById(R.id.imagen_evento);
+        menu_meditacion = rootView.findViewById(R.id.imagen_meditacion);
+        menu_angel = rootView.findViewById(R.id.imagen_angel);
+        menu_fondo = rootView.findViewById(R.id.imagen_fondo);
+        menu_espacio = rootView.findViewById(R.id.imagen_espacios);
 
         activity = getActivity();
 
@@ -154,6 +170,17 @@ public class principalFragment extends Fragment {
             }
         });
 
+        menu_mensaje.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getContext(), activity_mensaje.class);
+                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                getContext().startActivity(intent);
+            }
+        });
+
+
+
         mi_arcangel.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -164,7 +191,27 @@ public class principalFragment extends Fragment {
             }
         });
 
+        menu_arcangel.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getContext(), activity_arcangel.class);
+                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                getContext().startActivity(intent);
+
+            }
+        });
+
         tu_arcangel.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getContext(), activity_arcangel_general.class);
+                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                getContext().startActivity(intent);
+
+            }
+        });
+
+        menu_tu_arcangel.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(getContext(), activity_arcangel_general.class);
@@ -183,6 +230,15 @@ public class principalFragment extends Fragment {
             }
         });
 
+        menu_eventos.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getContext(), activity_evento.class);
+                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                getContext().startActivity(intent);
+            }
+        });
+
         videos_programa.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -191,6 +247,16 @@ public class principalFragment extends Fragment {
                 getContext().startActivity(intent);
             }
         });
+
+        menu_angel.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getContext(), activity_videos_programa.class);
+                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                getContext().startActivity(intent);
+            }
+        });
+
         videos_meditacion.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -199,7 +265,26 @@ public class principalFragment extends Fragment {
                 getContext().startActivity(intent);
             }
         });
+
+        menu_meditacion.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getContext(), activity_videos.class);
+                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                getContext().startActivity(intent);
+            }
+        });
+
         espacio.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getContext(), activity_espacio.class);
+                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                getContext().startActivity(intent);
+            }
+        });
+
+        menu_espacio.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(getContext(), activity_espacio.class);
@@ -216,6 +301,17 @@ public class principalFragment extends Fragment {
                 intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                 getContext().startActivity(intent);
 
+
+            }
+        });
+
+        menu_fondo.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Intent intent = new Intent(getContext(), activity_imagen_principal.class);
+                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                getContext().startActivity(intent);
 
             }
         });
