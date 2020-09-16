@@ -57,6 +57,7 @@ public class mensajesCanalizadosFragment extends Fragment {
     private String ls_mensaje;
     private ImageView imageViewMensaje;
     ProgressDialog progress1;
+    private Activity activity;
 
     public mensajesCanalizadosFragment(){}
 
@@ -70,6 +71,8 @@ public class mensajesCanalizadosFragment extends Fragment {
         mensaje_canalizado = v.findViewById(R.id.textViewMensaje);
         meGusta = v.findViewById(R.id.floatingMeGusta);
         imageViewMensaje = v.findViewById(R.id.imageViewMensaje);
+
+        activity = getActivity();
 
         datos = new ArrayList<>();
 
@@ -166,7 +169,7 @@ public class mensajesCanalizadosFragment extends Fragment {
         Log.d(TAG,newURL);
 
         VolleySingleton.
-                getInstance(getActivity()).
+                getInstance(activity).
                 addToRequestQueue(
                         new JsonObjectRequest(
                                 Request.Method.POST,
@@ -267,7 +270,7 @@ public class mensajesCanalizadosFragment extends Fragment {
         Log.d(TAG,newURL);
 
         VolleySingleton.
-                getInstance(getActivity()).
+                getInstance(activity).
                 addToRequestQueue(
                         new JsonObjectRequest(
                                 Request.Method.POST,
@@ -348,7 +351,7 @@ public class mensajesCanalizadosFragment extends Fragment {
         Log.d(TAG,newURL);
 
         VolleySingleton.
-                getInstance(getActivity()).
+                getInstance(activity).
                 addToRequestQueue(
                         new JsonObjectRequest(
                                 Request.Method.POST,
@@ -447,7 +450,7 @@ public class mensajesCanalizadosFragment extends Fragment {
         String newURL = Constantes.INSERT_USUARIO_FECHA + "?" + encodedParams;
         Log.d(TAG,newURL);
         // Actualizar datos en el servidor
-        VolleySingleton.getInstance(getActivity()).addToRequestQueue(
+        VolleySingleton.getInstance(activity).addToRequestQueue(
                 myRequest = new JsonObjectRequest(
                         Request.Method.GET,
                         newURL,
@@ -506,12 +509,12 @@ public class mensajesCanalizadosFragment extends Fragment {
                 case "1":
                     // Mostrar mensaje
                     Toast.makeText(
-                            getActivity(),
+                            activity,
                             mensaje,
                             Toast.LENGTH_LONG).show();
                     // Enviar código de éxito
                     progress1.dismiss();
-                    getActivity().setResult(Activity.RESULT_OK);
+                    activity.setResult(Activity.RESULT_OK);
 
 
                     break;
@@ -520,7 +523,7 @@ public class mensajesCanalizadosFragment extends Fragment {
                     // Mostrar mensaje
                     progress1.dismiss();
                     Toast.makeText(
-                            getActivity(),
+                            activity,
                             mensaje,
                             Toast.LENGTH_LONG).show();
 
@@ -563,7 +566,7 @@ public class mensajesCanalizadosFragment extends Fragment {
         Log.d(TAG,newURL);
 
         // Actualizar datos en el servidor
-        VolleySingleton.getInstance(getActivity()).addToRequestQueue(
+        VolleySingleton.getInstance(activity).addToRequestQueue(
                 myRequest = new JsonObjectRequest(
                         Request.Method.GET,
                         newURL,
@@ -621,11 +624,11 @@ public class mensajesCanalizadosFragment extends Fragment {
                 case "1":
                     // Mostrar mensaje
                     Toast.makeText(
-                            getActivity(),
+                            activity,
                             mensaje,
                             Toast.LENGTH_LONG).show();
                     // Enviar código de éxito
-                    getActivity().setResult(Activity.RESULT_OK);
+                    activity.setResult(Activity.RESULT_OK);
 
 
                     break;
@@ -633,7 +636,7 @@ public class mensajesCanalizadosFragment extends Fragment {
                 case "2":
                     // Mostrar mensaje
                     Toast.makeText(
-                            getActivity(),
+                            activity,
                             mensaje,
                             Toast.LENGTH_LONG).show();
 
@@ -675,7 +678,7 @@ public class mensajesCanalizadosFragment extends Fragment {
 
         String newURL = Constantes.VERIFICAR_MENSAJE + "?" + encodedParams;
         VolleySingleton.
-                getInstance(getActivity()).
+                getInstance(activity).
                 addToRequestQueue(
                         new JsonObjectRequest(
                                 Request.Method.POST,
@@ -737,6 +740,5 @@ public class mensajesCanalizadosFragment extends Fragment {
         }
 
     }
-
 
 }

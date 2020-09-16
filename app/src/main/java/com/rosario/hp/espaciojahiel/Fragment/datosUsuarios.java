@@ -83,7 +83,6 @@ public class datosUsuarios extends Fragment {
     String id_firebase= null;
     private FirebaseAuth mAuth = null;
     NothingSelectedSpinnerAdapter nothing;
-    Activity act;
     private JsonObjectRequest myRequest;
     private TextView tvNombre = null;
     private TextView tvMail = null;
@@ -107,6 +106,7 @@ public class datosUsuarios extends Fragment {
     private Bitmap loadedImage;
     DatePickerDialog datePickerDialog;
     String posicion_string;
+    private Activity activity;
 
     // Storage Permissions
     private static final int REQUEST_EXTERNAL_STORAGE = 1;
@@ -159,7 +159,7 @@ public class datosUsuarios extends Fragment {
 
 
         if (context instanceof Activity){
-            act=(Activity) context;
+            activity=(Activity) context;
         }
     }
     @Override
@@ -204,6 +204,7 @@ public class datosUsuarios extends Fragment {
         this.editar_foto = v.findViewById(R.id.buttonFoto);
         this.button_fecha = v.findViewById(R.id.buttonFecha);
         imagen =  v.findViewById(R.id.imageViewfoto);
+        activity = getActivity();
 
         this.button_fecha.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -268,7 +269,7 @@ public class datosUsuarios extends Fragment {
                         }
                     } else {
                         Toast.makeText(
-                                getActivity(),
+                                activity,
                                 "La clave ingresada no coincide con su confirmación",
                                 Toast.LENGTH_LONG).show();
                     }
@@ -307,7 +308,7 @@ public class datosUsuarios extends Fragment {
 
         clearGlideCache();
 
-        Glide.with(getActivity().getApplicationContext())
+        Glide.with(activity.getApplicationContext())
                 .load(filepath)
                 .error(R.drawable.ic_account_circle)
                 .fallback(R.drawable.ic_account_circle)
@@ -365,7 +366,7 @@ public class datosUsuarios extends Fragment {
                         filepath.putFile(imageUri).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
                             @Override
                             public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
-                                Toast.makeText(context, "Se ha actualizado la foto", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(activity, "Se ha actualizado la foto", Toast.LENGTH_SHORT).show();
 
                                 GetImageToURL = new GetImageToURL();
 
@@ -408,7 +409,7 @@ public class datosUsuarios extends Fragment {
 
 
     private void  abrirGaleria(View v) {
-        verifyStoragePermissions(getActivity());
+        verifyStoragePermissions(activity);
         Intent intent = new Intent();
         intent.setType("image/jpg");
         intent.setAction(Intent.ACTION_GET_CONTENT);
@@ -458,7 +459,7 @@ public class datosUsuarios extends Fragment {
                         }
                     } else {
                         Toast.makeText(
-                                getActivity(),
+                                activity,
                                 "La clave ingresada no coincide con su confirmación",
                                 Toast.LENGTH_LONG).show();
                     }
@@ -472,7 +473,7 @@ public class datosUsuarios extends Fragment {
     public boolean validar(){
         if(camposVacios()){
             Toast.makeText(
-                    getActivity(),
+                    activity,
                     "Completa los campos",
                     Toast.LENGTH_LONG).show();
             return true;}
@@ -493,7 +494,7 @@ public class datosUsuarios extends Fragment {
         {
             tvClave.requestFocus();
             Toast.makeText(
-                    getActivity(),
+                    activity,
                     "Debe ingresar su clave",
                     Toast.LENGTH_LONG).show();
             return true;
@@ -503,7 +504,7 @@ public class datosUsuarios extends Fragment {
         {
             tvConfirmar.requestFocus();
             Toast.makeText(
-                    getActivity(),
+                    activity,
                     "Debe ingresar la confirmación de su clave",
                     Toast.LENGTH_LONG).show();
             return true;
@@ -589,8 +590,10 @@ public class datosUsuarios extends Fragment {
 
         String newURL = Constantes.UPDATE_USUARIO + "?" + encodedParams;
 
+        Log.d(TAG,newURL);
+
         // Actualizar datos en el servidor
-        VolleySingleton.getInstance(getActivity()).addToRequestQueue(
+        VolleySingleton.getInstance(activity).addToRequestQueue(
                 myRequest = new JsonObjectRequest(
                         Request.Method.GET,
                         newURL,
@@ -651,7 +654,7 @@ public class datosUsuarios extends Fragment {
         //firebase
         mAuth.addAuthStateListener(mAuthListener);
         mAuth.createUserWithEmailAndPassword(mail, clave_original)
-                .addOnCompleteListener(act, new OnCompleteListener<AuthResult>() {
+                .addOnCompleteListener(activity, new OnCompleteListener<AuthResult>() {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()) {
@@ -693,7 +696,7 @@ public class datosUsuarios extends Fragment {
                             String newURL = Constantes.INSERT_USUARIO + "?" + encodedParams;
 
                             // Actualizar datos en el servidor
-                            VolleySingleton.getInstance(getActivity()).addToRequestQueue(
+                            VolleySingleton.getInstance(activity).addToRequestQueue(
                                     myRequest = new JsonObjectRequest(
                                             Request.Method.GET,
                                             newURL,
@@ -754,7 +757,7 @@ public class datosUsuarios extends Fragment {
                             }
 
                             Toast.makeText(
-                                    getActivity(),
+                                    activity,
                                     ls_error,
                                     Toast.LENGTH_LONG).show();
 
@@ -777,11 +780,11 @@ public class datosUsuarios extends Fragment {
                 case "1":
                     // Mostrar mensaje
                     Toast.makeText(
-                            getActivity(),
+                            activity,
                             mensaje,
                             Toast.LENGTH_LONG).show();
                     // Enviar código de éxito
-                    getActivity().setResult(Activity.RESULT_OK);
+                    activity.setResult(Activity.RESULT_OK);
 
                     posicion_string = String.valueOf(R.id.nav_home);
 
@@ -807,13 +810,13 @@ public class datosUsuarios extends Fragment {
                 case "2":
                     // Mostrar mensaje
                     Toast.makeText(
-                            getActivity(),
+                            activity,
                             mensaje,
                             Toast.LENGTH_LONG).show();
                     // Enviar código de falla
-                    getActivity().setResult(Activity.RESULT_CANCELED);
+                    activity.setResult(Activity.RESULT_CANCELED);
                     // Terminar actividad
-                    getActivity().finish();
+                    activity.finish();
                     break;
             }
         } catch (JSONException e) {
@@ -872,7 +875,7 @@ public class datosUsuarios extends Fragment {
 
         String newURL = Constantes.GET_BY_ID_USUARIO + "?id=" + ls_cod_usuario;
         VolleySingleton.
-                getInstance(getActivity()).
+                getInstance(activity).
                 addToRequestQueue(
                         new JsonObjectRequest(
                                 Request.Method.POST,
@@ -958,11 +961,11 @@ public class datosUsuarios extends Fragment {
             @Override
             public void run()
             {
-                Glide.get(getActivity().getApplicationContext()).clearDiskCache();
+                Glide.get(activity.getApplicationContext()).clearDiskCache();
             }
         }.start();
 
-        Glide.get(getActivity().getApplicationContext()).clearMemory();
+        Glide.get(activity.getApplicationContext()).clearMemory();
     }
 }
 

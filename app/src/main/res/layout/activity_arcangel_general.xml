@@ -6,8 +6,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:gravity="bottom"
     android:orientation="vertical"
-    android:paddingBottom="@dimen/activity_vertical_margin"
-    android:paddingTop="@dimen/activity_vertical_margin">
+    android:paddingBottom="5dp"
+    android:paddingTop="5dp">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -15,7 +15,7 @@
         android:orientation="vertical"
         android:layout_centerHorizontal="true"
         android:layout_below="@+id/editTextMail"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="1dp"
         android:id="@+id/fecha">
 
         <TextView
@@ -26,11 +26,20 @@
             android:text="@string/ingreso"
             android:textAlignment="center"
             android:textColor="@color/colorPrimary"
-            android:textSize="14sp" />
+            android:textSize="12sp" />
+        <TextView
+            android:id="@+id/ingreso2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:text="@string/ingreso_fecha"
+            android:textAlignment="center"
+            android:textColor="@color/colorPrimary"
+            android:textSize="12sp" />
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
+            android:layout_marginTop="2dp"
             >
 
             <EditText
@@ -45,9 +54,14 @@
 
             <com.google.android.material.floatingactionbutton.FloatingActionButton
                 android:id="@+id/buttonFecha"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="@dimen/icono_redes"
+                android:layout_height="@dimen/icono_redes"
                 android:background="@drawable/torta"
+                android:scaleType="fitXY"
+                app:fabCustomSize="@dimen/icono_redes"
+                app:elevation="1dp"
+                app:borderWidth="0dp"
+                app:pressedTranslationZ="1dp"
                 android:clickable="true"
 
                 app:srcCompat="@drawable/torta" />

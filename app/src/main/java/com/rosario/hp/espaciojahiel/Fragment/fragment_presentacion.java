@@ -3,19 +3,12 @@ package com.rosario.hp.espaciojahiel.Fragment;
 import android.app.Activity;
 import android.app.DatePickerDialog;
 import android.content.DialogInterface;
-import android.graphics.Bitmap;
-import android.net.Uri;
-import android.os.AsyncTask;
-
 import android.app.Dialog;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.preference.PreferenceManager;
-
-
-
 import android.content.Context;
 import android.os.Bundle;
 import android.util.Log;
@@ -91,6 +84,7 @@ import java.util.HashMap;
 import java.util.List;
 
 import java.util.Map;
+import java.util.Objects;
 
 import com.google.firebase.iid.FirebaseInstanceId;
 import com.google.gson.Gson;
@@ -179,7 +173,7 @@ public class fragment_presentacion extends Fragment implements LoginInteractor.C
 
 
     public void showLoginError(String msg) {
-        Toast.makeText(getActivity(), msg, Toast.LENGTH_LONG).show();
+        Toast.makeText(act, msg, Toast.LENGTH_LONG).show();
     }
 
     public void setPasswordError(String error) {
@@ -188,13 +182,13 @@ public class fragment_presentacion extends Fragment implements LoginInteractor.C
 
 
     public void showGooglePlayServicesError() {
-        Toast.makeText(getActivity(),
+        Toast.makeText(act,
                 "Se requiere Google Play Services para usar la app", Toast.LENGTH_LONG)
                 .show();
     }
 
     public void showNetworkError() {
-        Toast.makeText(getActivity(),
+        Toast.makeText(act,
                 "La red no está disponible. Conéctese y vuelva a intentarlo", Toast.LENGTH_LONG)
                 .show();
     }
@@ -373,7 +367,7 @@ public class fragment_presentacion extends Fragment implements LoginInteractor.C
                 });
 
 
-        m_Dialog_face = DialogUtils.showProgressDialog(getActivity(),"Iniciando sesión..");
+        m_Dialog_face = DialogUtils.showProgressDialog(act,"Iniciando sesión..");
         Bundle parameters = new Bundle();
         parameters.putString("fields", "id,name,email");
         request.setParameters(parameters);
@@ -385,7 +379,7 @@ public class fragment_presentacion extends Fragment implements LoginInteractor.C
         id_firebase = token.getToken();
 
         mFirebaseAuth.signInWithCredential(credential)
-                .addOnCompleteListener(getActivity(), new OnCompleteListener<AuthResult>() {
+                .addOnCompleteListener(act, new OnCompleteListener<AuthResult>() {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()) {
@@ -403,7 +397,7 @@ public class fragment_presentacion extends Fragment implements LoginInteractor.C
                             // If sign in fails, display a message to the user.
                             Log.w(TAG, "signInWithCredential:failure", task.getException());
                             m_Dialog_face.dismiss();
-                            Toast.makeText(context,"Error en login",Toast.LENGTH_LONG).show();
+                            Toast.makeText(act,"Error en login",Toast.LENGTH_LONG).show();
                         }
 
                     }
@@ -487,7 +481,7 @@ public class fragment_presentacion extends Fragment implements LoginInteractor.C
                 case "2":
                     String mensaje2 = response.getString("mensaje");
                     Toast.makeText(
-                            context,
+                            act,
                             mensaje2,
                             Toast.LENGTH_LONG).show();
                     break;
@@ -495,7 +489,7 @@ public class fragment_presentacion extends Fragment implements LoginInteractor.C
                 case "3":
                     String mensaje3 = response.getString("mensaje");
                     Toast.makeText(
-                            context,
+                            act,
                             mensaje3,
                             Toast.LENGTH_LONG).show();
                     break;
@@ -509,9 +503,9 @@ public class fragment_presentacion extends Fragment implements LoginInteractor.C
     }
 
     public AlertDialog createRegistroDialogo() {
-        AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+        AlertDialog.Builder builder = new AlertDialog.Builder(act);
 
-        LayoutInflater inflater = getActivity().getLayoutInflater();
+        LayoutInflater inflater = act.getLayoutInflater();
 
         View v = inflater.inflate(R.layout.activity_datos_usuario, null);
 
@@ -575,7 +569,7 @@ public class fragment_presentacion extends Fragment implements LoginInteractor.C
         imagen.setVisibility(View.INVISIBLE);
         Button signup = v.findViewById(R.id.buttonRegistro);
 
-        String rec = getActivity().getResources().getString(R.string.menu_guardar);
+        String rec = act.getResources().getString(R.string.menu_guardar);
         signup.setText(rec);
 
         signup.setOnClickListener(
@@ -591,67 +585,67 @@ public class fragment_presentacion extends Fragment implements LoginInteractor.C
 
                         if( ls_nombre.equals(""))
                         {
-                            tvNombre.setHintTextColor(Color.RED);
+                            tvNombre.setHintTextColor(act.getResources().getColor(R.color.menu_mensaje));
                             tvNombre.requestFocus();
-                            toast1 = Toast.makeText(getContext(), "Debe ingresar su nombre... " , Toast.LENGTH_LONG);
+                            toast1 = Toast.makeText(act, "Debe ingresar su nombre... " , Toast.LENGTH_LONG);
                             toast1.setGravity(19, 0, 0);
                             toast1.show();
                             return;
 
                         }else {
-                            tvNombre.setHintTextColor(getResources().getColor(R.color.colorRippleMini));
+                            tvNombre.setHintTextColor(act.getResources().getColor(R.color.colorRippleMini));
                         }
 
                         if( ls_mail.equals(""))
                         {
-                            tvMail.setHintTextColor(Color.RED);
+                            tvMail.setHintTextColor(act.getResources().getColor(R.color.menu_mensaje));
                             tvMail.requestFocus();
-                            toast1 = Toast.makeText(getContext(), "Debe ingresar su mail... " , Toast.LENGTH_LONG);
+                            toast1 = Toast.makeText(act, "Debe ingresar su mail... " , Toast.LENGTH_LONG);
                             toast1.setGravity(19, 0, 0);
                             toast1.show();
                             return;
 
                         }else {
-                            tvMail.setHintTextColor(getResources().getColor(R.color.colorRippleMini));
+                            tvMail.setHintTextColor(act.getResources().getColor(R.color.colorRippleMini));
                         }
 
                         if( ls_fecha.equals(""))
                         {
-                            tvFecha.setHintTextColor(Color.RED);
+                            tvFecha.setHintTextColor(act.getResources().getColor(R.color.menu_mensaje));
                             tvFecha.requestFocus();
-                            toast1 = Toast.makeText(getContext(), "Debe ingresar su fecha de nacimiento... " , Toast.LENGTH_LONG);
+                            toast1 = Toast.makeText(act, "Debe ingresar su fecha de nacimiento... " , Toast.LENGTH_LONG);
                             toast1.setGravity(19, 0, 0);
                             toast1.show();
                             return;
 
                         }else {
-                            tvFecha.setHintTextColor(getResources().getColor(R.color.colorRippleMini));
+                            tvFecha.setHintTextColor(act.getResources().getColor(R.color.colorRippleMini));
                         }
 
                         if( ls_contrasena.equals("")){
                             tvClave.setHintTextColor(Color.RED);
                             tvClave.requestFocus();
-                            toast1 = Toast.makeText(getContext(), "Debe ingresar contraseña... " , Toast.LENGTH_LONG);
+                            toast1 = Toast.makeText(act, "Debe ingresar contraseña... " , Toast.LENGTH_LONG);
                             toast1.setGravity(19, 0, 0);
                             toast1.show();
                             return;
                         }else {
-                            tvClave.setHintTextColor(getResources().getColor(R.color.colorRippleMini));
+                            tvClave.setHintTextColor(act.getResources().getColor(R.color.colorRippleMini));
                         }
 
                         if( ls_confirmacion.equals("")){
-                            tvConfirmacion.setHintTextColor(Color.RED);
+                            tvConfirmacion.setHintTextColor(act.getResources().getColor(R.color.menu_mensaje));
                             tvConfirmacion.requestFocus();
-                            toast1 = Toast.makeText(getContext(), "Debe ingresar la confirmación de su clave... " , Toast.LENGTH_LONG);
+                            toast1 = Toast.makeText(act, "Debe ingresar la confirmación de su clave... " , Toast.LENGTH_LONG);
                             toast1.setGravity(19, 0, 0);
                             toast1.show();
                             return;
                         }else {
-                            tvConfirmacion.setHintTextColor(getResources().getColor(R.color.colorRippleMini));
+                            tvConfirmacion.setHintTextColor(act.getResources().getColor(R.color.colorRippleMini));
                         }
                         lb_compara = compara_clave(ls_contrasena, ls_confirmacion);
                         if(!lb_compara){
-                            toast1 = Toast.makeText(getContext(), "La clave ingresada no coincide con su confirmación" , Toast.LENGTH_LONG);
+                            toast1 = Toast.makeText(act, "La clave ingresada no coincide con su confirmación" , Toast.LENGTH_LONG);
                             toast1.setGravity(19, 0, 0);
                             toast1.show();
                             return;
@@ -670,9 +664,11 @@ public class fragment_presentacion extends Fragment implements LoginInteractor.C
                                             guardarUsuario( context);
                                         } else {
                                             // If sign in fails, display a message to the user.
-                                            String ls_error;
+                                            String ls_error = "";
                                             try {
-                                                throw task.getException();
+
+                                                throw Objects.requireNonNull(task.getException());
+
                                             } catch(FirebaseAuthWeakPasswordException e) {
                                                 ls_error = getString(R.string.error_weak_password);
                                                 tvClave.requestFocus();
@@ -680,12 +676,12 @@ public class fragment_presentacion extends Fragment implements LoginInteractor.C
                                                 ls_error = getString(R.string.error_invalid_email);
                                                 tvMail.requestFocus();
                                             } catch(Exception e) {
-                                                Log.e(TAG, e.getMessage());
+                                                Log.e(TAG, Objects.requireNonNull(e.getMessage()));
                                                 ls_error = e.getMessage();
                                             }
 
                                             Toast.makeText(
-                                                    getActivity(),
+                                                    act,
                                                     ls_error,
                                                     Toast.LENGTH_LONG).show();
 
@@ -706,36 +702,6 @@ public class fragment_presentacion extends Fragment implements LoginInteractor.C
         return builder.create();
     }
 
-    private class guardarUsuario extends AsyncTask<Void, Void, Void> {
-
-        private Context mContext;
-        private String mUrl;
-
-
-
-        public guardarUsuario(String url,Context context) {
-            mContext = context;
-            mUrl = url;
-        }
-
-
-        @Override
-        protected void onPreExecute() {
-        }
-
-
-        @Override
-        protected Void doInBackground(Void... params) {
-
-            return null;
-        }
-
-        @Override
-        protected void onPostExecute(Void result) {
-
-            voley(mUrl,mContext);
-        }
-    }
 
     public void guardarUsuarioFace(final Context context) {
 
@@ -901,11 +867,11 @@ public class fragment_presentacion extends Fragment implements LoginInteractor.C
                 case "2":
                     // Mostrar mensaje
                     Toast.makeText(
-                            context,
+                            act,
                             mensaje,
                             Toast.LENGTH_LONG).show();
                     // Enviar código de falla
-                    getActivity().setResult(Activity.RESULT_CANCELED);
+                    act.setResult(Activity.RESULT_CANCELED);
                     // Terminar actividad
                     break;
             }
@@ -954,9 +920,9 @@ public class fragment_presentacion extends Fragment implements LoginInteractor.C
 
     }
     public AlertDialog createLoginDialogo() {
-        AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+        AlertDialog.Builder builder = new AlertDialog.Builder(act);
 
-        LayoutInflater inflater = getActivity().getLayoutInflater();
+        LayoutInflater inflater = act.getLayoutInflater();
 
         View v = inflater.inflate(R.layout.activity_login, null);
 
@@ -993,7 +959,7 @@ public class fragment_presentacion extends Fragment implements LoginInteractor.C
                         if( ls_mail.equals("")){
                             m_Dialog.dismiss();
                             Log.d(TAG ,"email_vacio");
-                            fragment_presentacion.this.toast1 = Toast.makeText(fragment_presentacion.this.getContext(), "Debe ingresar usuario... " , Toast.LENGTH_LONG);
+                            fragment_presentacion.this.toast1 = Toast.makeText(act, "Debe ingresar usuario... " , Toast.LENGTH_LONG);
                             fragment_presentacion.this.toast1.setGravity(19, 0, 0);
                             fragment_presentacion.this.toast1.show();
                             return;
@@ -1002,7 +968,7 @@ public class fragment_presentacion extends Fragment implements LoginInteractor.C
                         if( ls_contrasena.equals("")){
                             m_Dialog.dismiss();
                             Log.d(TAG ,"pass_vacia");
-                            fragment_presentacion.this.toast1 = Toast.makeText(fragment_presentacion.this.getContext(), "Debe ingresar contraseña... " , Toast.LENGTH_LONG);
+                            fragment_presentacion.this.toast1 = Toast.makeText(act, "Debe ingresar contraseña... " , Toast.LENGTH_LONG);
                             fragment_presentacion.this.toast1.setGravity(19, 0, 0);
                             fragment_presentacion.this.toast1.show();
                             return;
@@ -1017,25 +983,25 @@ public class fragment_presentacion extends Fragment implements LoginInteractor.C
 
                                             try {
                                                 Log.d(TAG,"error login");
-                                                throw task.getException();
+                                                throw Objects.requireNonNull(task.getException());
 
                                             } catch (FirebaseAuthInvalidUserException e) {
                                                 Log.d(TAG, "Invalid Emaild Id - email :" + ls_mail);
-                                                fragment_presentacion.this.toast1 = Toast.makeText(fragment_presentacion.this.getContext(), "Error al ingresar mail... ", Toast.LENGTH_LONG);
+                                                fragment_presentacion.this.toast1 = Toast.makeText(act, "Error al ingresar mail... ", Toast.LENGTH_LONG);
                                                 fragment_presentacion.this.toast1.setGravity(19, 0, 0);
                                                 fragment_presentacion.this.toast1.show();
                                             } catch (FirebaseAuthInvalidCredentialsException e) {
                                                 Log.d(TAG, "Invalid Password - email :" + ls_mail);
-                                                fragment_presentacion.this.toast1 = Toast.makeText(fragment_presentacion.this.getContext(), "Error al ingresar clave... ", Toast.LENGTH_LONG);
+                                                fragment_presentacion.this.toast1 = Toast.makeText(act, "Error al ingresar clave... ", Toast.LENGTH_LONG);
                                                 fragment_presentacion.this.toast1.setGravity(19, 0, 0);
                                                 fragment_presentacion.this.toast1.show();
                                             } catch (FirebaseNetworkException e) {
                                                 Log.d(TAG, "error_message_failed_sign_in_no_network");
-                                                fragment_presentacion.this.toast1 = Toast.makeText(fragment_presentacion.this.getContext(), "Error en la red... ", Toast.LENGTH_LONG);
+                                                fragment_presentacion.this.toast1 = Toast.makeText(act, "Error en la red... ", Toast.LENGTH_LONG);
                                                 fragment_presentacion.this.toast1.setGravity(19, 0, 0);
                                                 fragment_presentacion.this.toast1.show();
                                             } catch (Exception e) {
-                                                Log.e(TAG, e.getMessage());
+                                                Log.e(TAG, Objects.requireNonNull(e.getMessage()));
                                             }
                                             m_Dialog.dismiss();
                                             Log.w(TAG, "signInWithEmail:failed", task.getException());
@@ -1070,7 +1036,7 @@ public class fragment_presentacion extends Fragment implements LoginInteractor.C
                 LinearLayout.LayoutParams.MATCH_PARENT);
         input.setLayoutParams(lp);
 
-        final AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+        final AlertDialog.Builder builder = new AlertDialog.Builder(act);
         builder.setTitle(R.string.dialogo_contrasenia)
                 .setView(input)
                 .setMessage(R.string.mensaje_contrasenia)
@@ -1087,14 +1053,14 @@ public class fragment_presentacion extends Fragment implements LoginInteractor.C
                                                 public void onComplete(@NonNull Task<Void> task) {
                                                     if (task.isSuccessful()) {
                                                         Log.d(TAG, "Email sent.");
-                                                        Toast.makeText(getContext(), "Se han enviado instrucciones para resetear su clave", Toast.LENGTH_LONG).show();
+                                                        Toast.makeText(act, "Se han enviado instrucciones para resetear su clave", Toast.LENGTH_LONG).show();
                                                     } else {
-                                                        Toast.makeText(getContext(), "Fallo al resetear su clave", Toast.LENGTH_LONG).show();
+                                                        Toast.makeText(act, "Fallo al resetear su clave", Toast.LENGTH_LONG).show();
                                                     }
                                                 }
                                             });
                                 }else{
-                                    Toast.makeText(getContext(), "Debe ingresar una dirección de mail para reestablecer la contraseña", Toast.LENGTH_LONG).show();
+                                    Toast.makeText(act, "Debe ingresar una dirección de mail para reestablecer la contraseña", Toast.LENGTH_LONG).show();
                                 }
 
                             }
@@ -1144,7 +1110,7 @@ public class fragment_presentacion extends Fragment implements LoginInteractor.C
         String newURL = Constantes.UPDATE_TOKEN + "?" + encodedParams;
 
         // Actualizar datos en el servidor
-        VolleySingleton.getInstance(getActivity()).addToRequestQueue(
+        VolleySingleton.getInstance(act).addToRequestQueue(
                 new JsonObjectRequest(
                         Request.Method.GET,
                         newURL,
@@ -1190,7 +1156,7 @@ public class fragment_presentacion extends Fragment implements LoginInteractor.C
                 case "2":
                     // Mostrar mensaje
                     Toast.makeText(
-                            getActivity(),
+                            act,
                             mensaje,
                             Toast.LENGTH_LONG).show();
                     // Enviar código de falla
@@ -1277,7 +1243,7 @@ public class fragment_presentacion extends Fragment implements LoginInteractor.C
                 case "3":
                     String mensaje3 = response.getString("mensaje");
                     Toast.makeText(
-                            context,
+                            act,
                             mensaje3,
                             Toast.LENGTH_LONG).show();
                     break;

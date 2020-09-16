@@ -256,7 +256,7 @@ public class imagenFragment extends Fragment {
                 case "1":
                     // Mostrar mensaje
                     Toast.makeText(
-                            getActivity(),
+                            activity,
                             mensaje,
                             Toast.LENGTH_LONG).show();
                     // Enviar código de éxito
@@ -268,7 +268,7 @@ public class imagenFragment extends Fragment {
                 case "2":
                     // Mostrar mensaje
                     Toast.makeText(
-                            getActivity(),
+                            activity,
                             mensaje,
                             Toast.LENGTH_LONG).show();
 

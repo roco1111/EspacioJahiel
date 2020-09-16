@@ -1,5 +1,6 @@
 package com.rosario.hp.espaciojahiel.Fragment;
 
+import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.SharedPreferences;
@@ -52,6 +53,7 @@ public class arcangelFragment extends Fragment {
     private Gson gson = new Gson();
     private ImageButton configuracion;
     String posicion_string;
+    private Activity activity;
 
     ProgressDialog progress1;
 
@@ -71,6 +73,7 @@ public class arcangelFragment extends Fragment {
         ls_cod_usuario     = settings.getString("cod_usuario","");
         progress1 = ProgressDialog.show(getContext(), "Cargando Datos", "Por favor, espere..", true);
         cargarDatos(getContext());
+        activity = getActivity();
 
         configuracion.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -283,7 +286,7 @@ public class arcangelFragment extends Fragment {
                 case "2":
                     String mensaje2 = response.getString("mensaje");
                     Toast.makeText(
-                            context,
+                            activity,
                             mensaje2,
                             Toast.LENGTH_LONG).show();
                     progress1.dismiss();
@@ -292,7 +295,7 @@ public class arcangelFragment extends Fragment {
                 case "3":
                     String mensaje3 = response.getString("mensaje");
                     Toast.makeText(
-                            context,
+                            activity,
                             mensaje3,
                             Toast.LENGTH_LONG).show();
                     progress1.dismiss();

@@ -143,7 +143,7 @@ public class principalFragment extends Fragment {
 
                 Intent intent = new Intent(getContext(), WebActivity.class);
                 intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                getActivity().startActivity(intent);
+                activity.startActivity(intent);
                 editor.commit();
             }
         });
@@ -166,7 +166,7 @@ public class principalFragment extends Fragment {
             public void onClick(View v) {
                 Intent intent = new Intent(getContext(), activity_mensaje.class);
                 intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                getContext().startActivity(intent);
+                activity.startActivity(intent);
             }
         });
 
@@ -175,7 +175,7 @@ public class principalFragment extends Fragment {
             public void onClick(View v) {
                 Intent intent = new Intent(getContext(), activity_mensaje.class);
                 intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                getContext().startActivity(intent);
+                activity.startActivity(intent);
             }
         });
 
@@ -186,7 +186,7 @@ public class principalFragment extends Fragment {
             public void onClick(View v) {
                     Intent intent = new Intent(getContext(), activity_arcangel.class);
                     intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                    getContext().startActivity(intent);
+                    activity.startActivity(intent);
 
             }
         });
@@ -196,7 +196,7 @@ public class principalFragment extends Fragment {
             public void onClick(View v) {
                 Intent intent = new Intent(getContext(), activity_arcangel.class);
                 intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                getContext().startActivity(intent);
+                activity.startActivity(intent);
 
             }
         });
@@ -206,7 +206,7 @@ public class principalFragment extends Fragment {
             public void onClick(View v) {
                 Intent intent = new Intent(getContext(), activity_arcangel_general.class);
                 intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                getContext().startActivity(intent);
+                activity.startActivity(intent);
 
             }
         });
@@ -216,7 +216,7 @@ public class principalFragment extends Fragment {
             public void onClick(View v) {
                 Intent intent = new Intent(getContext(), activity_arcangel_general.class);
                 intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                getContext().startActivity(intent);
+                activity.startActivity(intent);
 
             }
         });
@@ -226,7 +226,7 @@ public class principalFragment extends Fragment {
             public void onClick(View v) {
                 Intent intent = new Intent(getContext(), activity_evento.class);
                 intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                getContext().startActivity(intent);
+                activity.startActivity(intent);
             }
         });
 
@@ -235,7 +235,7 @@ public class principalFragment extends Fragment {
             public void onClick(View v) {
                 Intent intent = new Intent(getContext(), activity_evento.class);
                 intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                getContext().startActivity(intent);
+                activity.startActivity(intent);
             }
         });
 
@@ -244,7 +244,7 @@ public class principalFragment extends Fragment {
             public void onClick(View v) {
                 Intent intent = new Intent(getContext(), activity_videos_programa.class);
                 intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                getContext().startActivity(intent);
+                activity.startActivity(intent);
             }
         });
 
@@ -253,7 +253,7 @@ public class principalFragment extends Fragment {
             public void onClick(View v) {
                 Intent intent = new Intent(getContext(), activity_videos_programa.class);
                 intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                getContext().startActivity(intent);
+                activity.startActivity(intent);
             }
         });
 
@@ -262,7 +262,7 @@ public class principalFragment extends Fragment {
             public void onClick(View v) {
                 Intent intent = new Intent(getContext(), activity_videos.class);
                 intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                getContext().startActivity(intent);
+                activity.startActivity(intent);
             }
         });
 
@@ -271,7 +271,7 @@ public class principalFragment extends Fragment {
             public void onClick(View v) {
                 Intent intent = new Intent(getContext(), activity_videos.class);
                 intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                getContext().startActivity(intent);
+                activity.startActivity(intent);
             }
         });
 
@@ -280,7 +280,7 @@ public class principalFragment extends Fragment {
             public void onClick(View v) {
                 Intent intent = new Intent(getContext(), activity_espacio.class);
                 intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                getContext().startActivity(intent);
+                activity.startActivity(intent);
             }
         });
 
@@ -289,7 +289,7 @@ public class principalFragment extends Fragment {
             public void onClick(View v) {
                 Intent intent = new Intent(getContext(), activity_espacio.class);
                 intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                getContext().startActivity(intent);
+                activity.startActivity(intent);
             }
         });
 
@@ -299,7 +299,7 @@ public class principalFragment extends Fragment {
 
                 Intent intent = new Intent(getContext(), activity_imagen_principal.class);
                 intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                getContext().startActivity(intent);
+                activity.startActivity(intent);
 
 
             }
@@ -311,12 +311,10 @@ public class principalFragment extends Fragment {
 
                 Intent intent = new Intent(getContext(), activity_imagen_principal.class);
                 intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                getContext().startActivity(intent);
+                activity.startActivity(intent);
 
             }
         });
-
-
 
         return rootView;
     }
@@ -327,7 +325,7 @@ public class principalFragment extends Fragment {
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case R.id.nav_mensajes_guardados:
-                getActivity().getActionBar().setTitle(item.getTitle());
+                activity.getActionBar().setTitle(item.getTitle());
                 break;
 
         }

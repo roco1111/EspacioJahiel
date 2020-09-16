@@ -80,10 +80,11 @@
 
             <com.google.android.material.floatingactionbutton.FloatingActionButton
                 android:id="@+id/buttonFecha"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="@dimen/icono"
+                android:layout_height="@dimen/icono"
                 android:background="@drawable/torta"
-                android:clickable="true"
+                app:fabCustomSize="@dimen/icono"
+                android:focusable="true"
                 app:srcCompat="@drawable/torta" />
 
 
