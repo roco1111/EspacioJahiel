@@ -6,7 +6,7 @@
     <dimen name="nav_header_height">196dp</dimen>
     <dimen name="encabezado">346dp</dimen>
     <dimen name="fab_margin">16dp</dimen>
-    <dimen name="opciones">14sp</dimen>
+    <dimen name="opciones">13sp</dimen>
     <dimen name="texto_boton_chico">10sp</dimen>
     <dimen name="tamanio_item">15sp</dimen>
     <dimen name="tamanio_item_pequenio">12sp</dimen>
@@ -22,7 +22,7 @@
     <dimen name="perfil_image_size">90dp</dimen>
     <dimen name="tamanio_menu">87dp</dimen>
     <dimen name="ancho_menu">83dp</dimen>
-    <dimen name="tamanio_item_menu">60dp</dimen>
+    <dimen name="tamanio_item_menu">55dp</dimen>
     <dimen name="alto_imagen_acerca">280dp</dimen>
     <dimen name="ancho_imagen_acerca">155dp</dimen>
     <dimen name="espacio_grilla">20dp</dimen>

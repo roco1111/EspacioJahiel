@@ -20,8 +20,8 @@
 
       <ImageView
           android:id="@+id/imagealas"
-          android:layout_width="134dp"
-          android:layout_height="159dp"
+          android:layout_width="154dp"
+          android:layout_height="179dp"
           android:layout_centerHorizontal="true"
           app:srcCompat="@drawable/espacio_jahiel" />
 
@@ -97,6 +97,7 @@
           android:id="@+id/opciones1"
           android:orientation="horizontal"
 
+
           >
 
 
@@ -116,13 +117,13 @@
              app:srcCompat="@drawable/ic_mensaje"
              android:gravity="center_horizontal"
              android:layout_marginStart="10dp"
-             android:tint="@color/menu_mensaje"/>
+         />
 
          <TextView
              android:id="@+id/mensaje_canalizado"
              android:layout_width="@dimen/ancho_menu"
              android:layout_height="wrap_content"
-             android:layout_marginTop="10dp"
+             android:layout_marginTop="@dimen/headerbar_elevation"
              android:layout_marginBottom="10dp"
              android:fontFamily="@font/montserratregular"
              android:gravity="center"
@@ -146,13 +147,13 @@
                 app:srcCompat="@drawable/angelito"
                 android:gravity="center"
                 android:layout_marginStart="10dp"
-                android:tint="@color/menu_arcangel"/>
+           />
 
             <TextView
                 android:id="@+id/mi_arcangel"
                 android:layout_width="@dimen/tamanio_menu"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
+                android:layout_marginTop="@dimen/headerbar_elevation"
                 android:layout_marginBottom="10dp"
                 android:fontFamily="@font/montserratregular"
                 android:gravity="center"
@@ -176,13 +177,13 @@
                 app:srcCompat="@drawable/ic_nube"
                 android:layout_marginStart="10dp"
                 android:gravity="center"
-                android:tint="@color/menu_tu_arcangel"/>
+               />
 
             <TextView
                 android:id="@+id/tu_arcangel"
                 android:layout_width="@dimen/tamanio_menu"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
+                android:layout_marginTop="@dimen/headerbar_elevation"
                 android:layout_marginBottom="10dp"
                 android:fontFamily="@font/montserratregular"
                 android:gravity="center"
@@ -206,13 +207,13 @@
                 app:srcCompat="@drawable/ic_eventos"
                 android:layout_marginStart="10dp"
                 android:gravity="center"
-                android:tint="@color/menu_eventos"/>
+              />
 
             <TextView
                 android:id="@+id/eventos"
                 android:layout_width="@dimen/tamanio_menu"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
+                android:layout_marginTop="@dimen/headerbar_elevation"
                 android:layout_marginBottom="10dp"
                 android:fontFamily="@font/montserratregular"
                 android:gravity="center"
@@ -232,6 +233,7 @@
           android:orientation="horizontal"
           android:layout_below="@id/opciones1"
          android:layout_marginBottom="15dp"
+
           >
 
    <LinearLayout
@@ -248,13 +250,13 @@
           app:srcCompat="@drawable/ic_video"
           android:layout_marginStart="10dp"
           android:gravity="center"
-          android:tint="@color/menu_meditacion"/>
+          />
 
       <TextView
           android:id="@+id/videos_meditacion"
           android:layout_width="@dimen/tamanio_menu"
           android:layout_height="wrap_content"
-          android:layout_marginTop="10dp"
+          android:layout_marginTop="@dimen/headerbar_elevation"
           android:layout_marginBottom="10dp"
           android:fontFamily="@font/montserratregular"
           android:gravity="center"
@@ -278,12 +280,12 @@
              app:srcCompat="@drawable/ic_video_programa"
              android:layout_marginStart="10dp"
              android:gravity="center"
-             android:tint="@color/menu_angel"/>
+       />
          <TextView
              android:id="@+id/videos_programa"
              android:layout_width="@dimen/tamanio_menu"
              android:layout_height="wrap_content"
-             android:layout_marginTop="10dp"
+             android:layout_marginTop="@dimen/headerbar_elevation"
              android:layout_marginBottom="10dp"
              android:fontFamily="@font/montserratregular"
              android:gravity="center"
@@ -308,14 +310,13 @@
           android:layout_height="@dimen/tamanio_item_menu"
           android:layout_marginStart="10dp"
           app:srcCompat="@drawable/ic_baseline"
-          android:gravity="center"
-          android:tint="@color/menu_fondos"/>
+          android:gravity="center" />
 
       <TextView
           android:id="@+id/fondos_pantalla"
           android:layout_width="@dimen/tamanio_menu"
           android:layout_height="wrap_content"
-          android:layout_marginTop="10dp"
+          android:layout_marginTop="@dimen/headerbar_elevation"
           android:layout_marginBottom="10dp"
           android:fontFamily="@font/montserratregular"
           android:gravity="center"
@@ -340,13 +341,13 @@
           android:layout_marginStart="10dp"
           app:srcCompat="@drawable/ic_bandera"
           android:gravity="center"
-          android:tint="@color/menu_espacios"/>
+    />
 
       <TextView
           android:id="@+id/espacios"
           android:layout_width="@dimen/tamanio_menu"
           android:layout_height="wrap_content"
-          android:layout_marginTop="10dp"
+          android:layout_marginTop="@dimen/headerbar_elevation"
           android:layout_marginBottom="10dp"
           android:fontFamily="@font/montserratregular"
           android:gravity="center"
