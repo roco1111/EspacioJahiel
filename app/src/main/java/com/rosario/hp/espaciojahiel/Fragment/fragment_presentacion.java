@@ -91,9 +91,6 @@ import com.google.gson.Gson;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 
-
-
-
 public class fragment_presentacion extends Fragment implements LoginInteractor.Callback{
     private LoginButton face;
     private Button ingreso;

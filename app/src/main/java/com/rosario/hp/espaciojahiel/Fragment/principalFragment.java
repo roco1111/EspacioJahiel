@@ -133,7 +133,7 @@ public class principalFragment extends Fragment {
 
                 String ls_link;
 
-                ls_link = "http://espaciojahiel.com/";
+                ls_link = "https://espaciojahiel.com/";
 
                 SharedPreferences settings = PreferenceManager.getDefaultSharedPreferences(getContext());
                 SharedPreferences.Editor editor = settings.edit();

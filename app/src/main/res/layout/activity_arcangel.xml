@@ -29,6 +29,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="0dp"
         android:layout_marginTop="0dp"
+        android:layout_alignParentTop="true"
         android:background="@drawable/arcangeles"
         android:contentDescription="@string/nav_header_desc" />
 
@@ -39,7 +40,7 @@
         android:layout_below="@+id/imageViewArcangel"
         android:layout_centerHorizontal="true"
         android:text="TextView"
-        android:layout_marginTop="3dp"
+        android:layout_marginTop="1dp"
         android:textAlignment="center"
         android:textColor="@color/colorPrimary"
         android:textSize="@dimen/tamanio_parrafo" />
@@ -47,12 +48,11 @@
     <TextView
         android:id="@+id/textViewtexto"
         android:layout_width="362dp"
-        android:layout_height="282dp"
+        android:layout_height="288dp"
         android:layout_below="@+id/textViewTitulo"
         android:layout_centerHorizontal="true"
         android:text="TextView"
         android:textColor="@color/colorPrimary"
-        android:layout_marginTop="4dp"
         android:textSize="@dimen/tamanio_item" />
 
     <ImageView

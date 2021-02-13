@@ -14,8 +14,6 @@
         android:layout_height="wrap_content"
         android:orientation="vertical"
         android:layout_centerHorizontal="true"
-        android:layout_below="@+id/editTextMail"
-        android:layout_marginTop="1dp"
         android:id="@+id/fecha">
 
         <TextView
@@ -45,7 +43,7 @@
             <EditText
                 android:id="@+id/editTextFechaNac"
                 android:layout_width="@dimen/ancho_imagen_acerca"
-                android:layout_height="@dimen/campos_height"
+                android:layout_height="@dimen/campos_height_chico"
                 android:ems="10"
                 android:hint="@string/fecha_nac_ejemplo"
                 android:inputType="date"
@@ -69,7 +67,7 @@
             <Button
                 android:id="@+id/buttonVer"
                 android:layout_width="78dp"
-                android:layout_height="33dp"
+                android:layout_height="31dp"
                 android:layout_marginStart="40dp"
                 android:background="@drawable/btn_ver"
                 android:text="@string/ver"

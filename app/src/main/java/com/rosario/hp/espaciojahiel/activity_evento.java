@@ -12,6 +12,8 @@ import com.rosario.hp.espaciojahiel.Fragment.eventosFragment;
 
 public class activity_evento extends AppCompatActivity {
 
+    public static final String ACTION_NOTIFY_NEW_PROMO = "NOTIFY_NEW_PROMO";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

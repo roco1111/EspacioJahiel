@@ -11,6 +11,7 @@ import android.net.Uri;
 import android.preference.PreferenceManager;
 
 import android.util.Log;
+import android.widget.Switch;
 import android.widget.Toast;
 
 import androidx.core.app.NotificationCompat;
@@ -42,6 +43,7 @@ public class FCMService extends  FirebaseMessagingService {
   private String codUsuario;
   private String titulo;
   private String texto;
+  private String tipo;
   private String ls_fecha;
   private String ls_hora;
   Calendar c1 = Calendar.getInstance();
@@ -51,15 +53,29 @@ public class FCMService extends  FirebaseMessagingService {
   public void onMessageReceived(RemoteMessage remoteMessage) {
     // Create and show notification
 
-    sendNotification(remoteMessage.getData().get("body"), remoteMessage.getData().get("title"));
+    sendNotification(remoteMessage.getData().get("body"), remoteMessage.getData().get("title"), remoteMessage.getData().get("tipo"));
     sendNewPromoBroadcast(remoteMessage);
   }
 
   private void sendNewPromoBroadcast(RemoteMessage remoteMessage) {
-    Intent intent = new Intent(MainActivity.ACTION_NOTIFY_NEW_PROMO);
+
     titulo = remoteMessage.getData().get("title");
     texto = remoteMessage.getData().get("body");
+    tipo = remoteMessage.getData().get("tipo");
 
+    Intent intent = null;
+
+    switch (tipo){
+      case "Imagen":
+        intent = new Intent(activity_imagen.ACTION_NOTIFY_NEW_PROMO);
+        break;
+      case "evento":
+        intent = new Intent(activity_evento.ACTION_NOTIFY_NEW_PROMO);
+        break;
+      case "notificacion":
+        intent = new Intent(activity_videos_programa.ACTION_NOTIFY_NEW_PROMO);
+        break;
+    }
     SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
     ls_fecha = sdf.format(Calendar.getInstance().getTime());
     SimpleDateFormat sdf2 = new SimpleDateFormat("hh:mm");
@@ -76,9 +92,22 @@ public class FCMService extends  FirebaseMessagingService {
             .sendBroadcast(intent);
   }
 
-  private void sendNotification(String messageBody, String title) {
+  private void sendNotification(String messageBody, String title, String tipo) {
 
-    Intent intent = new Intent(this, MainActivity.class);
+    Intent intent = null;
+
+    switch (tipo){
+      case "Imagen":
+        intent = new Intent(this, activity_imagen.class);
+        break;
+      case "evento":
+        intent = new Intent(this, activity_evento.class);
+        break;
+      case "notificacion":
+        intent = new Intent(this, activity_videos_programa.class);
+        break;
+    }
+
     intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
     PendingIntent pendingIntent = PendingIntent.getActivity(this, 0 /* Request code */, intent,
             PendingIntent.FLAG_ONE_SHOT);
@@ -111,10 +140,5 @@ public class FCMService extends  FirebaseMessagingService {
 
     notificationManager.notify(0 /* ID of notification */, builder.build());
   }
-
-
-
-
-
 
 }

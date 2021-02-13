@@ -12,6 +12,8 @@ import com.rosario.hp.espaciojahiel.Fragment.listaVideosPrograma;
 
 public class activity_videos_programa extends AppCompatActivity {
 
+    public static final String ACTION_NOTIFY_NEW_PROMO = "NOTIFY_NEW_PROMO";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
